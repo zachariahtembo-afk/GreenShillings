@@ -35,12 +35,14 @@ function getPreviewClient(): SanityClient {
 
 export const client = new Proxy({} as SanityClient, {
   get(_, prop) {
-    return (getClient() as Record<string | symbol, unknown>)[prop];
+    return (getClient() as unknown as Record<string | symbol, unknown>)[prop];
   },
 });
 
 export const previewClient = new Proxy({} as SanityClient, {
   get(_, prop) {
-    return (getPreviewClient() as Record<string | symbol, unknown>)[prop];
+    return (getPreviewClient() as unknown as Record<string | symbol, unknown>)[
+      prop
+    ];
   },
 });
