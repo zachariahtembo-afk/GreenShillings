@@ -1,0 +1,183 @@
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600,700&f[]=clash-display@400,500,600,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+
+    /* Simplified Palette */
+    --color-green: 142 64% 29%; /* #1B7A3D */
+    --color-green-light: 142 55% 40%; /* #2E9E55 */
+    --color-green-dark: 142 65% 22%; /* #145C2E */
+    --color-green-tint: 142 40% 93%; /* #E8F5ED */
+    --color-charcoal: 150 12% 7%; /* #111412 */
+    --color-accent: 41 88% 55%; /* #F2B84B */
+    --color-chalk: 40 25% 96%; /* #F9F7F2 */
+    --color-white: 0 0% 100%;
+
+    /* shadcn/ui CSS variables - Aligned to new palette */
+    --background: var(--color-white);
+    --foreground: var(--color-charcoal);
+    --card: var(--color-white);
+    --card-foreground: var(--color-charcoal);
+    --popover: var(--color-white);
+    --popover-foreground: var(--color-charcoal);
+    --primary: var(--color-green);
+    --primary-foreground: var(--color-white);
+    --secondary: var(--color-chalk);
+    --secondary-foreground: var(--color-charcoal);
+    --muted: var(--color-chalk);
+    --muted-foreground: var(--color-charcoal);
+    --accent: var(--color-accent);
+    --accent-foreground: var(--color-charcoal);
+    --destructive: 0 84% 60%; /* Keep for errors */
+    --destructive-foreground: 0 0% 100%;
+    --border: 142 20% 88%; /* Lightened green for borders */
+    --input: 142 20% 88%;
+    --ring: var(--color-accent);
+    --radius: 0.5rem;
+
+    /* Legacy variables for smoother transition */
+    --color-forest: var(--color-green);
+    --color-leaf: var(--color-accent);
+    --color-ink: var(--color-charcoal);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply min-h-screen font-sans antialiased;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+
+  /* Confident editorial headings */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Clash Display', 'General Sans', sans-serif;
+    color: hsl(var(--foreground));
+    font-weight: 600;
+  }
+
+  h1 {
+    @apply text-4xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tighter;
+    letter-spacing: -0.03em;
+  }
+
+  h2 {
+    @apply text-3xl md:text-5xl lg:text-6xl leading-[1.08] tracking-tighter;
+    letter-spacing: -0.02em;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl font-semibold leading-[1.2];
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  a {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  section {
+    scroll-margin-top: 6rem;
+  }
+
+  /* Refined focus states */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-offset-2;
+    box-shadow: 0 0 0 2px hsl(var(--ring) / 0.6);
+    --tw-ring-offset-color: hsl(var(--background));
+  }
+
+  /* Sophisticated selection */
+  ::selection {
+    background-color: hsl(var(--accent) / 0.22);
+    color: hsl(var(--foreground));
+  }
+
+  /* Dark mode not implemented yet, but keeping stub */
+  .dark {
+    /* TBD */
+  }
+}
+
+@layer components {
+  /* ===== BUTTONS ===== */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl font-semibold transition-all duration-300;
+    background-color: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+    border: 2px solid hsl(var(--accent));
+    box-shadow: 0 12px 24px hsl(var(--accent) / 0.28);
+  }
+
+  .btn-primary:hover {
+    filter: brightness(0.96);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl font-semibold transition-all duration-300;
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border: 2px solid hsl(var(--primary));
+    box-shadow: 0 12px 24px hsl(var(--primary) / 0.22);
+  }
+
+  .btn-secondary:hover {
+    filter: brightness(0.9);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-2xl font-semibold transition-all duration-300;
+    color: hsl(var(--primary));
+    background-color: hsl(var(--background));
+    border: 2px solid hsl(var(--border));
+  }
+
+  .btn-ghost:hover {
+    background-color: hsl(var(--secondary));
+    border-color: hsl(var(--primary) / 0.28);
+  }
+
+  /* ===== LABELS & DIVIDERS ===== */
+  .section-label {
+    @apply text-[0.8125rem] font-semibold uppercase tracking-[0.2em];
+    color: hsl(var(--primary));
+  }
+
+  .section-label-light {
+    @apply text-[0.8125rem] font-semibold uppercase tracking-[0.2em];
+    color: hsl(var(--accent));
+  }
+
+  .divider-editorial {
+    @apply w-10 h-[2px] rounded-full;
+    background-color: hsl(var(--accent));
+  }
+}
+
+@layer utilities {
+  /* Text balance for headings */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-chalk {
+    background-color: hsl(var(--color-chalk));
+  }
+}

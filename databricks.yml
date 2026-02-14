@@ -1,0 +1,45 @@
+# This is a Databricks asset bundle definition for green-shillings.
+# The Databricks extension requires databricks.yml configuration file.
+# See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+
+bundle:
+  name: green-shillings
+
+resources:
+  jobs:
+    rfp_analyzer:
+      name: "GreenShillings RFP Analyzer"
+      tasks:
+        - task_key: analyze_rfp
+          notebook_task:
+            notebook_path: ./databricks/notebooks/rfp_analyzer.py
+          new_cluster:
+            spark_version: "14.3.x-scala2.12"
+            node_type_id: "i3.xlarge"
+            num_workers: 0
+            spark_conf:
+              "spark.master": "local[*]"
+            custom_tags:
+              project: green-shillings
+          libraries:
+            - pypi:
+                package: "boto3"
+            - pypi:
+                package: "PyMuPDF"
+            - pypi:
+                package: "python-docx"
+            - pypi:
+                package: "pdfplumber"
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-9c4882ab-ab5f.cloud.databricks.com
+
+  ## Optionally, there could be 'staging' or 'prod' targets here.
+  #
+  # prod:
+  #   workspace:
+  #     host: https://dbc-9c4882ab-ab5f.cloud.databricks.com
