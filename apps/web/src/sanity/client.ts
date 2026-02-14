@@ -1,20 +1,46 @@
-import { createClient } from '@sanity/client';
+import { createClient, type SanityClient } from '@sanity/client';
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!;
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
 const apiVersion = '2024-01-01';
 
-export const client = createClient({
-  projectId,
-  dataset,
-  apiVersion,
-  useCdn: true,
+function getClient(): SanityClient {
+  if (!projectId) {
+    throw new Error(
+      'Missing NEXT_PUBLIC_SANITY_PROJECT_ID environment variable'
+    );
+  }
+  return createClient({
+    projectId,
+    dataset,
+    apiVersion,
+    useCdn: true,
+  });
+}
+
+function getPreviewClient(): SanityClient {
+  if (!projectId) {
+    throw new Error(
+      'Missing NEXT_PUBLIC_SANITY_PROJECT_ID environment variable'
+    );
+  }
+  return createClient({
+    projectId,
+    dataset,
+    apiVersion,
+    useCdn: false,
+    token: process.env.SANITY_API_TOKEN,
+  });
+}
+
+export const client = new Proxy({} as SanityClient, {
+  get(_, prop) {
+    return (getClient() as Record<string | symbol, unknown>)[prop];
+  },
 });
 
-export const previewClient = createClient({
-  projectId,
-  dataset,
-  apiVersion,
-  useCdn: false,
-  token: process.env.SANITY_API_TOKEN,
+export const previewClient = new Proxy({} as SanityClient, {
+  get(_, prop) {
+    return (getPreviewClient() as Record<string | symbol, unknown>)[prop];
+  },
 });
