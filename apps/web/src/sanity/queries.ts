@@ -1,8 +1,8 @@
-import { client } from './client';
+import { getClient } from './client';
 
 // Insights
 export async function getInsights(limit = 12) {
-  return client.fetch(
+  return getClient().fetch(
     `*[_type == "insight"] | order(publishedAt desc)[0...$limit] {
       _id,
       title,
@@ -22,7 +22,7 @@ export async function getInsights(limit = 12) {
 }
 
 export async function getFeaturedInsights() {
-  return client.fetch(
+  return getClient().fetch(
     `*[_type == "insight" && featured == true] | order(publishedAt desc)[0...3] {
       _id,
       title,
@@ -36,7 +36,7 @@ export async function getFeaturedInsights() {
 }
 
 export async function getInsightBySlug(slug: string) {
-  return client.fetch(
+  return getClient().fetch(
     `*[_type == "insight" && slug.current == $slug][0] {
       _id,
       title,
@@ -60,7 +60,7 @@ export async function getInsightBySlug(slug: string) {
 }
 
 export async function getInsightsByCategory(categorySlug: string) {
-  return client.fetch(
+  return getClient().fetch(
     `*[_type == "insight" && category->slug.current == $categorySlug] | order(publishedAt desc) {
       _id,
       title,
@@ -76,7 +76,7 @@ export async function getInsightsByCategory(categorySlug: string) {
 
 // Categories
 export async function getCategories() {
-  return client.fetch(
+  return getClient().fetch(
     `*[_type == "category"] | order(title asc) {
       _id,
       title,
@@ -88,7 +88,7 @@ export async function getCategories() {
 
 // Advocacy Content
 export async function getAdvocacyContent() {
-  return client.fetch(
+  return getClient().fetch(
     `*[_type == "advocacyContent"] | order(publishedAt desc) {
       _id,
       title,
@@ -104,7 +104,7 @@ export async function getAdvocacyContent() {
 
 // Project Updates
 export async function getProjectUpdates(limit = 6) {
-  return client.fetch(
+  return getClient().fetch(
     `*[_type == "projectUpdate"] | order(publishedAt desc)[0...$limit] {
       _id,
       title,
@@ -119,7 +119,7 @@ export async function getProjectUpdates(limit = 6) {
 
 // Pillars
 export async function getPillars() {
-  return client.fetch(
+  return getClient().fetch(
     `*[_type == "pillar"] | order(priority asc) {
       _id,
       title,
