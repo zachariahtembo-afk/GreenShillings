@@ -14,40 +14,39 @@ import {
 import { HeroSequence, Reveal, StaggerContainer, StaggerItem } from '../../../components/motion';
 import { QuoteBlock } from '../../../components/quote-block';
 import { Card } from '../../../components/ui/card';
-
-const steps = [
-  {
-    icon: Users,
-    title: 'Community governance first',
-    description:
-      'Local leaders co-design governance, consent, and benefit-sharing terms before pilots launch.',
-  },
-  {
-    icon: ClipboardList,
-    title: 'Project registration',
-    description:
-      'We assemble baseline data, documentation, and risk checks to meet integrity standards.',
-  },
-  {
-    icon: Satellite,
-    title: 'MRV integration',
-    description:
-      'We prepare satellite + ground data pipelines with MRV partners for transparent reporting.',
-  },
-  {
-    icon: BadgeCheck,
-    title: 'Verification readiness',
-    description: 'Evidence packs and audit trails are prepared for third-party verification.',
-  },
-  {
-    icon: Wallet,
-    title: 'Value sharing',
-    description:
-      'Funding flows are tracked so communities can see and approve how value is distributed.',
-  },
-];
+import { useLanguage } from '../../../lib/i18n/language-context';
 
 export default function IntegrityPage() {
+  const { t } = useLanguage();
+
+  const steps = [
+    {
+      icon: Users,
+      title: t.integrity.communityGovernanceFirst,
+      description: t.integrity.communityGovernanceFirstDesc,
+    },
+    {
+      icon: ClipboardList,
+      title: t.integrity.projectRegistration,
+      description: t.integrity.projectRegistrationDesc,
+    },
+    {
+      icon: Satellite,
+      title: t.integrity.mrvIntegration,
+      description: t.integrity.mrvIntegrationDesc,
+    },
+    {
+      icon: BadgeCheck,
+      title: t.integrity.verificationReadiness,
+      description: t.integrity.verificationReadinessDesc,
+    },
+    {
+      icon: Wallet,
+      title: t.integrity.valueSharing,
+      description: t.integrity.valueSharingDesc,
+    },
+  ];
+
   return (
     <div className="flex flex-col bg-white text-charcoal">
       {/* Hero */}
@@ -57,28 +56,27 @@ export default function IntegrityPage() {
             <div className="max-w-2xl">
               <div className="flex items-center gap-3 mb-6 text-forest/70" data-hero>
                 <span className="h-2 w-2 rounded-full bg-leaf" />
-                <span className="section-label">Integrity</span>
+                <span className="section-label">{t.integrity.sectionLabel}</span>
               </div>
 
               <h1 className="mb-6 text-ink text-balance text-4xl md:text-5xl lg:text-6xl" data-hero>
-                Integrity from governance to verification.
+                {t.integrity.heroHeadline}
               </h1>
 
               <p
                 className="text-base md:text-lg text-charcoal/70 leading-relaxed mb-8 max-w-prose"
                 data-hero
               >
-                We build pilots so communities lead, evidence stays transparent, and verification is
-                ready before outcomes are claimed.
+                {t.integrity.heroDescription}
               </p>
 
               <div className="flex flex-wrap gap-4" data-hero>
                 <Link href="/pilot-phase" className="btn-primary">
-                  See pilot phase
+                  {t.integrity.seePilotPhase}
                   <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
                 </Link>
                 <Link href="/partners" className="btn-secondary">
-                  Partner for verification
+                  {t.integrity.partnerForVerification}
                 </Link>
               </div>
             </div>
@@ -90,12 +88,11 @@ export default function IntegrityPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-leaf/70 mb-3">Integrity first</p>
-              <p className="text-2xl md:text-3xl font-display text-white">Designed for verification</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-leaf/70 mb-3">{t.integrity.integrityFirst}</p>
+              <p className="text-2xl md:text-3xl font-display text-white">{t.integrity.designedForVerification}</p>
             </div>
             <p className="text-sm text-white/70 max-w-md">
-              We do not claim outcomes before verification. Pilot reporting is structured to make
-              validation straightforward for partners.
+              {t.integrity.designedForVerificationDesc}
             </p>
           </div>
         </div>
@@ -105,32 +102,29 @@ export default function IntegrityPage() {
       <section className="py-14 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <Reveal>
-            <p className="section-label mb-4">Integrity pillars</p>
+            <p className="section-label mb-4">{t.integrity.integrityPillars}</p>
             <div className="divider-editorial mt-4" />
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="mb-12 text-ink max-w-2xl">Designed for transparency and fairness.</h2>
+            <h2 className="mb-12 text-ink max-w-2xl">{t.integrity.designedForTransparency}</h2>
           </Reveal>
 
           <StaggerContainer className="grid gap-6 md:grid-cols-3" staggerDelay={0.1}>
             {[
               {
                 icon: Satellite,
-                title: 'MRV partnerships',
-                description:
-                  'We are integrating satellite and field data pipelines with verification partners to ensure traceability.',
+                title: t.integrity.mrvPartnerships,
+                description: t.integrity.mrvPartnershipsDesc,
               },
               {
                 icon: FileCheck,
-                title: 'Evidence vaults',
-                description:
-                  'Every pilot produces a clear trail of documents: consent, baselines, governance, and reporting templates.',
+                title: t.integrity.evidenceVaults,
+                description: t.integrity.evidenceVaultsDesc,
               },
               {
                 icon: Users,
-                title: 'Community value capture',
-                description:
-                  'Benefit sharing is designed into the pilot contracts so communities receive more than participation.',
+                title: t.integrity.communityValueCapture,
+                description: t.integrity.communityValueCaptureDesc,
               },
             ].map((item) => (
               <StaggerItem key={item.title}>
@@ -151,11 +145,11 @@ export default function IntegrityPage() {
       <section className="py-14 md:py-20 bg-chalk">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <Reveal>
-            <p className="section-label mb-4">End-to-end flow</p>
+            <p className="section-label mb-4">{t.integrity.endToEndFlow}</p>
             <div className="divider-editorial mt-4" />
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="mb-12 text-ink max-w-2xl">From governance to verified outcomes.</h2>
+            <h2 className="mb-12 text-ink max-w-2xl">{t.integrity.fromGovernanceToVerified}</h2>
           </Reveal>
 
           <StaggerContainer className="grid gap-6 md:grid-cols-2" staggerDelay={0.1}>
@@ -168,7 +162,7 @@ export default function IntegrityPage() {
                     </div>
                     <div>
                       <p className="text-xs uppercase tracking-[0.2em] text-forest/70 mb-2">
-                        Step {index + 1}
+                        {t.integrity.step} {index + 1}
                       </p>
                       <h3 className="text-lg text-forest mb-2">{step.title}</h3>
                       <p className="text-sm text-gray-600 leading-relaxed max-w-prose">
@@ -187,9 +181,9 @@ export default function IntegrityPage() {
       <section className="py-14 md:py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <QuoteBlock
-            quote="We will only report verified outcomes. Until then, we focus on building the governance, data, and transparency systems that make verification possible."
-            author="GreenShilling"
-            role="Integrity statement"
+            quote={t.integrity.integrityStatement}
+            author={t.integrity.integrityStatementAuthor}
+            role={t.integrity.integrityStatementRole}
           />
         </div>
       </section>
@@ -200,17 +194,15 @@ export default function IntegrityPage() {
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-start">
             <div>
               <Reveal>
-                <p className="section-label mb-4">Available now</p>
+                <p className="section-label mb-4">{t.integrity.availableNow}</p>
                 <div className="divider-editorial mt-4" />
               </Reveal>
               <Reveal delay={0.1}>
-                <h2 className="mb-6 text-ink">Evidence you can review today.</h2>
+                <h2 className="mb-6 text-ink">{t.integrity.evidenceYouCanReview}</h2>
               </Reveal>
               <Reveal delay={0.2}>
                 <p className="text-lg text-gray-600 leading-relaxed max-w-prose">
-                  We are preparing pilot documentation packs that include consent records, baseline
-                  methodology notes, and governance agreements. These are available to partners
-                  under NDA while pilots are in progress.
+                  {t.integrity.evidenceAvailableDesc}
                 </p>
               </Reveal>
             </div>
@@ -220,12 +212,12 @@ export default function IntegrityPage() {
                   <Scale className="h-5 w-5" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h3 className="text-lg text-forest mb-2">Request an integrity briefing</h3>
+                  <h3 className="text-lg text-forest mb-2">{t.integrity.requestIntegrityBriefing}</h3>
                   <p className="text-sm text-gray-600 mb-4">
-                    We can share our current evidence checklist and verification readiness status.
+                    {t.integrity.requestIntegrityBriefingDesc}
                   </p>
                   <Link href="/partners" className="btn-primary">
-                    Partner briefing
+                    {t.integrity.partnerBriefing}
                     <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
                   </Link>
                 </div>

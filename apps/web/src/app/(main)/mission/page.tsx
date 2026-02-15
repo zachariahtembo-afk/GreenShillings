@@ -7,9 +7,11 @@ import { HeroSequence, Reveal, StaggerContainer, StaggerItem } from '../../../co
 import { Pillars } from '../../../components/pillars';
 import { StatsGrid } from '../../../components/stats-grid';
 import { Card, CardGrid } from '../../../components/ui/card';
+import { useLanguage } from '../../../lib/i18n/language-context';
 
 export default function HomePage() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (!videoRef.current) return;
@@ -36,12 +38,12 @@ export default function HomePage() {
           <HeroSequence className="max-w-3xl">
             <div>
               <h1 className="mb-10 text-balance text-white" data-hero>
-                Building the rails for community-led carbon projects in Tanzania.
+                {t.home.heroHeadline}
               </h1>
 
               <div className="flex flex-wrap gap-4" data-hero>
                 <Link href="/pilot-phase" className="btn-primary">
-                  Explore the Pilot Phase
+                  {t.home.explorePilot}
                   <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
                 </Link>
               </div>
@@ -53,42 +55,32 @@ export default function HomePage() {
       <section id="pillars" className="py-14 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <Reveal>
-            <p className="section-label mb-4">Two pillars</p>
+            <p className="section-label mb-4">{t.home.twoPillars}</p>
             <div className="divider-editorial mt-4" />
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="mb-10 text-foreground max-w-2xl">
-              Advocacy now, pilot phase in progress.
+              {t.home.advocacyNowPilot}
             </h2>
           </Reveal>
           <Pillars
             items={[
               {
-                title: 'Advocacy',
-                status: 'Active now',
-                description:
-                  'We run standards literacy, partner mobilization, and policy alignment so Tanzania-led projects can compete on integrity.',
-                bullets: [
-                  'Standards guidance for communities',
-                  'Evidence-led policy engagement',
-                  'Partner briefings and transparency tools',
-                ],
+                title: t.home.advocacy.title,
+                status: t.home.advocacy.status,
+                description: t.home.advocacy.description,
+                bullets: [...t.home.advocacy.bullets],
                 href: '/work',
-                ctaLabel: 'Advocacy work',
+                ctaLabel: t.home.advocacy.ctaLabel,
                 tone: 'active',
               },
               {
-                title: 'Pilot Phase',
-                status: 'In progress',
-                description:
-                  'We are registering pilot projects, onboarding communities, and setting up MRV and payout rails to prove fair value sharing.',
-                bullets: [
-                  'Project registration + FPIC',
-                  'Community governance setup',
-                  'MRV partner integrations',
-                ],
+                title: t.home.pilotPhase.title,
+                status: t.home.pilotPhase.status,
+                description: t.home.pilotPhase.description,
+                bullets: [...t.home.pilotPhase.bullets],
                 href: '/pilot-phase',
-                ctaLabel: 'Pilot phase detail',
+                ctaLabel: t.home.pilotPhase.ctaLabel,
                 tone: 'in-progress',
               },
             ]}
@@ -101,12 +93,12 @@ export default function HomePage() {
       <section className="py-14 md:py-20 bg-chalk">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <Reveal>
-            <p className="section-label mb-4">Why this matters</p>
+            <p className="section-label mb-4">{t.home.whyThisMatters}</p>
             <div className="divider-editorial mt-4" />
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="mb-8 text-foreground max-w-2xl">
-              Less than 10% of carbon revenue reaches African communities.
+              {t.home.lessThan10}
             </h2>
           </Reveal>
           <CardGrid columns={2} className="gap-6">
@@ -116,11 +108,9 @@ export default function HomePage() {
                   <Globe2 className="h-5 w-5" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h3 className="text-lg text-primary mb-3">Infrastructure Gaps</h3>
+                  <h3 className="text-lg text-primary mb-3">{t.home.infrastructureGaps}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Carbon finance is a multi-billion-dollar market, but infrastructure, data
-                    integrity, and verification requirements often prevent African projects from
-                    attracting capital.
+                    {t.home.infrastructureGapsDesc}
                   </p>
                 </div>
               </div>
@@ -131,11 +121,9 @@ export default function HomePage() {
                   <Scale className="h-5 w-5" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h3 className="text-lg text-primary mb-3">Value Capture Mismatch</h3>
+                  <h3 className="text-lg text-primary mb-3">{t.home.valueCaptureMismatch}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Even when capital arrives, communities often receive a smaller share of value.
-                    Locally led governance keeps benefit capture closer to the people doing the
-                    work.
+                    {t.home.valueCaptureMismatchDesc}
                   </p>
                 </div>
               </div>
@@ -148,12 +136,12 @@ export default function HomePage() {
       <section className="py-14 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <Reveal>
-            <p className="section-label mb-4">Locally led</p>
+            <p className="section-label mb-4">{t.home.locallyLed}</p>
             <div className="divider-editorial mt-4" />
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="mb-12 text-foreground max-w-2xl">
-              Communities lead the governance, not just participation.
+              {t.home.communitiesLeadGovernance}
             </h2>
           </Reveal>
 
@@ -161,21 +149,18 @@ export default function HomePage() {
             {[
               {
                 icon: Users,
-                title: 'Local governance first',
-                description:
-                  'Community governance structures are designed up front, with clear decision rights and oversight.',
+                title: t.home.localGovernanceFirst,
+                description: t.home.localGovernanceFirstDesc,
               },
               {
                 icon: Shield,
-                title: 'Benefit sharing built in',
-                description:
-                  'Pilot design targets meaningful value capture for communities, with transparent reporting on flows.',
+                title: t.home.benefitSharingBuiltIn,
+                description: t.home.benefitSharingBuiltInDesc,
               },
               {
                 icon: FileCheck,
-                title: 'Evidence you can verify',
-                description:
-                  'We prepare evidence packs and reporting pipelines that are audit-ready and easy to review.',
+                title: t.home.evidenceYouCanVerify,
+                description: t.home.evidenceYouCanVerifyDesc,
               },
             ].map((item) => (
               <StaggerItem key={item.title}>
@@ -196,16 +181,16 @@ export default function HomePage() {
       <section className="py-14 md:py-20 bg-chalk">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <Reveal>
-            <p className="section-label mb-4">Pilot phase snapshot</p>
+            <p className="section-label mb-4">{t.home.pilotPhaseSnapshot}</p>
             <div className="divider-editorial mt-4" />
           </Reveal>
           <Reveal delay={0.1}>
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
               <h2 className="text-foreground max-w-2xl">
-                A credible, investable plan for 2025–2026.
+                {t.home.crediblePlan}
               </h2>
               <Link href="/pilot-phase" className="btn-secondary">
-                See pilot phase
+                {t.home.seePilotPhase}
               </Link>
             </div>
           </Reveal>
@@ -214,15 +199,15 @@ export default function HomePage() {
             items={[
               {
                 value: '2-4',
-                label: 'Pilot Sites Targeted (2025)',
+                label: t.home.pilotSitesTargeted,
               },
               {
                 value: '12-18 Months',
-                label: 'From Registration to Payout',
+                label: t.home.fromRegistrationToPayout,
               },
               {
                 value: '>50%',
-                label: 'Target Community Revenue Share',
+                label: t.home.targetCommunityRevenueShare,
               },
             ]}
             columns={3}
@@ -230,11 +215,11 @@ export default function HomePage() {
 
           <div className="mt-10 flex flex-wrap gap-3">
             <Link href="/partners" className="btn-primary">
-              Partner with us
+              {t.home.partnerWithUs}
               <Handshake className="h-4 w-4" strokeWidth={1.5} />
             </Link>
             <Link href="/donate" className="btn-ghost">
-              Support the pilots
+              {t.home.supportThePilots}
             </Link>
           </div>
         </div>

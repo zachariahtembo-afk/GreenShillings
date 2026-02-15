@@ -1,8 +1,13 @@
+'use client';
+
 import Link from 'next/link';
 import { CheckCircle, ArrowRight } from 'lucide-react';
 import { HeroSequence, Reveal } from '../../../../components/motion';
+import { useLanguage } from '../../../../lib/i18n/language-context';
 
 export default function DonateSuccessPage() {
+  const { t } = useLanguage();
+
   return (
     <div className="flex flex-col bg-white">
       <section className="relative overflow-hidden bg-white text-charcoal">
@@ -15,51 +20,48 @@ export default function DonateSuccessPage() {
           <HeroSequence className="grid gap-10">
             <div className="inline-flex items-center gap-3 text-forest/70" data-hero>
               <span className="h-2 w-2 rounded-full bg-leaf" />
-              <span className="section-label">Payment confirmed</span>
+              <span className="section-label">{t.donateSuccess.paymentConfirmed}</span>
             </div>
 
             <h1 className="text-ink text-balance" data-hero>
-              Thank you for backing community-led restoration.
+              {t.donateSuccess.thankYou}
             </h1>
 
             <p
               className="text-lg md:text-xl text-charcoal/70 leading-relaxed max-w-prose"
               data-hero
             >
-              Your payment has been processed successfully. Your contribution helps communities
-              in Tanzania restore land, build resilient livelihoods, and document climate impact
-              with integrity.
+              {t.donateSuccess.description}
             </p>
 
             <Reveal className="grid gap-4 sm:grid-cols-2" data-hero>
               <div className="rounded-3xl border border-forest/10 bg-white p-6">
                 <div className="flex items-center gap-3 text-forest mb-3">
                   <CheckCircle className="h-5 w-5" />
-                  <p className="text-sm font-medium">Payment processed</p>
+                  <p className="text-sm font-medium">{t.donateSuccess.paymentProcessed}</p>
                 </div>
                 <p className="text-sm text-charcoal/70">
-                  Your donation has been securely processed via Stripe. A receipt has been
-                  sent to your email address.
+                  {t.donateSuccess.paymentProcessedDesc}
                 </p>
               </div>
               <div className="rounded-3xl border border-forest/10 bg-white p-6">
                 <div className="flex items-center gap-3 text-forest mb-3">
                   <CheckCircle className="h-5 w-5" />
-                  <p className="text-sm font-medium">Impact updates</p>
+                  <p className="text-sm font-medium">{t.donateSuccess.impactUpdates}</p>
                 </div>
                 <p className="text-sm text-charcoal/70">
-                  You will receive quarterly updates and milestone alerts if you opted in.
+                  {t.donateSuccess.impactUpdatesDesc}
                 </p>
               </div>
             </Reveal>
 
             <div className="flex flex-wrap gap-4" data-hero>
               <Link href="/integrity" className="btn-primary">
-                Integrity overview
+                {t.donateSuccess.integrityOverview}
                 <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
               </Link>
               <Link href="/" className="btn-secondary">
-                Back to home
+                {t.donateSuccess.backToHome}
               </Link>
             </div>
           </HeroSequence>

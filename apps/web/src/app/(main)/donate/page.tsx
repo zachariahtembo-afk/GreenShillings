@@ -33,68 +33,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '../../../components/ui/accordion';
-
-const tiers = [
-  {
-    id: 'community-advocate',
-    name: 'Community Advocate',
-    amount: 25,
-    description: 'Support the foundation of community-led work',
-    icon: Heart,
-    benefits: [
-      'Quarterly impact updates',
-      'Community project briefs',
-      'Supporter recognition (optional)',
-    ],
-    impact: 'Funds training materials for one household',
-  },
-  {
-    id: 'project-catalyst',
-    name: 'Project Catalyst',
-    amount: 100,
-    description: 'Accelerate community-led restoration',
-    icon: Users,
-    featured: true,
-    benefits: [
-      'Everything in Community Advocate',
-      'Direct project updates',
-      'Annual impact report',
-    ],
-    impact: 'Supports tree planting for a community cooperative',
-  },
-  {
-    id: 'systemic-reformer',
-    name: 'Systemic Reformer',
-    amount: 500,
-    description: 'Advance market reform',
-    icon: Landmark,
-    benefits: [
-      'Everything in Project Catalyst',
-      'Early access to research',
-      'Strategy briefings with our team',
-    ],
-    impact: 'Funds policy advocacy for market reform',
-  },
-];
-
-const faqs = [
-  {
-    q: 'How is my donation used?',
-    a: 'We set pilot targets to direct the majority of funding toward community-led work. We publish transparent allocation updates as pilots progress.',
-  },
-  {
-    q: 'Can I cancel my monthly donation?',
-    a: 'Yes. You can cancel anytime via the link in your confirmation email or by contacting us.',
-  },
-  {
-    q: 'Is my donation tax-deductible?',
-    a: 'GreenShilling is a registered non-profit. Tax deductibility depends on your jurisdiction.',
-  },
-  {
-    q: 'How will I know my impact?',
-    a: 'Supporters receive quarterly impact updates, with optional SMS or WhatsApp milestone alerts.',
-  },
-];
+import { useLanguage } from '../../../lib/i18n/language-context';
 
 type Step = 'select' | 'details' | 'confirm';
 
@@ -114,6 +53,70 @@ export default function DonatePage() {
     notificationChannel: 'email' as 'email' | 'sms' | 'whatsapp' | 'all',
     receiveMilestoneUpdates: true,
   });
+
+  const { t } = useLanguage();
+
+  const tiers = [
+    {
+      id: 'community-advocate',
+      name: t.donate.communityAdvocate,
+      amount: 25,
+      description: t.donate.communityAdvocateDesc,
+      icon: Heart,
+      benefits: [
+        t.donate.benefit1,
+        t.donate.benefit2,
+        t.donate.benefit3,
+      ],
+      impact: t.donate.communityAdvocateImpact,
+    },
+    {
+      id: 'project-catalyst',
+      name: t.donate.projectCatalyst,
+      amount: 100,
+      description: t.donate.projectCatalystDesc,
+      icon: Users,
+      featured: true,
+      benefits: [
+        t.donate.benefit4,
+        t.donate.benefit5,
+        t.donate.benefit6,
+      ],
+      impact: t.donate.projectCatalystImpact,
+    },
+    {
+      id: 'systemic-reformer',
+      name: t.donate.systemicReformer,
+      amount: 500,
+      description: t.donate.systemicReformerDesc,
+      icon: Landmark,
+      benefits: [
+        t.donate.benefit7,
+        t.donate.benefit8,
+        t.donate.benefit9,
+      ],
+      impact: t.donate.systemicReformerImpact,
+    },
+  ];
+
+  const faqs = [
+    {
+      q: t.donate.faq1Q,
+      a: t.donate.faq1A,
+    },
+    {
+      q: t.donate.faq2Q,
+      a: t.donate.faq2A,
+    },
+    {
+      q: t.donate.faq3Q,
+      a: t.donate.faq3A,
+    },
+    {
+      q: t.donate.faq4Q,
+      a: t.donate.faq4A,
+    },
+  ];
 
   const selectedTierData = tiers.find((t) => t.id === selectedTier);
   const customValue = customAmount ? Number.parseFloat(customAmount) : NaN;
@@ -193,19 +196,18 @@ export default function DonatePage() {
             <div>
               <div className="flex items-center gap-3 mb-6 text-forest/70" data-hero>
                 <span className="h-2 w-2 rounded-full bg-leaf" />
-                <span className="section-label">Donate</span>
+                <span className="section-label">{t.donate.sectionLabel}</span>
               </div>
 
               <h1 className="mb-6 text-charcoal text-balance text-4xl md:text-5xl lg:text-6xl" data-hero>
-                Fund community-led restoration
+                {t.donate.heroHeadline}
               </h1>
 
               <p
                 className="text-base md:text-lg text-charcoal/70 leading-relaxed mb-6 max-w-prose"
                 data-hero
               >
-                Your donation goes directly to Tanzanian communities and the work that protects their
-                share.
+                {t.donate.heroDescription}
               </p>
 
               <div
@@ -213,7 +215,7 @@ export default function DonatePage() {
                 data-hero
               >
                 <CountUp value={80} suffix="%" className="font-semibold text-forest" />
-                <span>pilot target for community-directed funding.</span>
+                <span>{t.donate.pilotTarget}</span>
               </div>
 
               <div className="mt-8 flex" data-hero>
@@ -226,7 +228,7 @@ export default function DonatePage() {
                   }}
                   className="btn-pill-primary"
                 >
-                  Choose a tier
+                  {t.donate.chooseATier}
                   <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
                 </button>
               </div>
@@ -238,19 +240,18 @@ export default function DonatePage() {
       <section className="py-12 md:py-16 bg-chalk">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid gap-4 md:grid-cols-2">
           <div className="rounded-3xl bg-forest text-white p-6 md:p-7 shadow-[0_24px_50px_rgba(10,28,20,0.2)]">
-            <p className="text-xs uppercase tracking-[0.2em] text-white/60 mb-3">Funding split</p>
-            <p className="text-2xl font-display mb-2">Pilot funding targets</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-white/60 mb-3">{t.donate.fundingSplit}</p>
+            <p className="text-2xl font-display mb-2">{t.donate.pilotFundingTargets}</p>
             <p className="text-sm text-white/80 max-w-prose">
-              Targeting majority community value share in pilot budgets, with transparent reporting
-              on allocations.
+              {t.donate.fundingSplitDesc}
             </p>
           </div>
 
           <div className="rounded-3xl bg-white border-2 border-forest/10 p-6 md:p-7">
-            <p className="text-xs uppercase tracking-[0.2em] text-forest/70 mb-3">Stewardship</p>
-            <p className="text-2xl font-display text-forest mb-2">Quarterly reporting</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-forest/70 mb-3">{t.donate.stewardship}</p>
+            <p className="text-2xl font-display text-forest mb-2">{t.donate.quarterlyReporting}</p>
             <p className="text-sm text-charcoal/70 max-w-prose">
-              Donors receive transparent updates and community-approved impact stories.
+              {t.donate.stewardshipDesc}
             </p>
           </div>
         </div>
@@ -261,9 +262,9 @@ export default function DonatePage() {
         <div className="max-w-2xl mx-auto px-6 lg:px-8">
           <Reveal>
             <div className="surface-glass rounded-3xl p-8 md:p-10">
-              <p className="section-label text-center mb-4">Where your donation goes</p>
+              <p className="section-label text-center mb-4">{t.donate.whereYourDonationGoes}</p>
               <p className="text-xs text-center text-gray-400 mb-8">
-                Pilot targets only — allocations published as pilots progress.
+                {t.donate.pilotTargetsOnly}
               </p>
 
               {/* Impact Bar */}
@@ -279,21 +280,21 @@ export default function DonatePage() {
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
                   <div className="text-3xl font-display text-forest mb-1">80%</div>
-                  <div className="text-sm text-gray-500">Community target</div>
+                  <div className="text-sm text-gray-500">{t.donate.communityTarget}</div>
                   {donationAmount > 0 && (
                     <div className="text-xs text-forest mt-1">${communityAmount}</div>
                   )}
                 </div>
                 <div>
                   <div className="text-3xl font-display text-citrus mb-1">15%</div>
-                  <div className="text-sm text-gray-500">Operations target</div>
+                  <div className="text-sm text-gray-500">{t.donate.operationsTarget}</div>
                   {donationAmount > 0 && (
                     <div className="text-xs text-citrus mt-1">${operationsAmount}</div>
                   )}
                 </div>
                 <div>
                   <div className="text-3xl font-display text-leaf mb-1">5%</div>
-                  <div className="text-sm text-gray-500">Advocacy target</div>
+                  <div className="text-sm text-gray-500">{t.donate.advocacyTarget}</div>
                   {donationAmount > 0 && (
                     <div className="text-xs text-leaf mt-1">${advocacyAmount}</div>
                   )}
@@ -321,9 +322,9 @@ export default function DonatePage() {
               <div className={`step-dot ${step === 'confirm' ? 'active' : ''}`}>3</div>
             </div>
             <div className="flex justify-between mt-4 text-sm text-gray-500">
-              <span>Choose tier</span>
-              <span>Your details</span>
-              <span>Confirm</span>
+              <span>{t.donate.chooseTierStep}</span>
+              <span>{t.donate.yourDetailsStep}</span>
+              <span>{t.donate.confirmStep}</span>
             </div>
           </div>
 
@@ -349,20 +350,20 @@ export default function DonatePage() {
                         value="monthly"
                         className="data-[state=active]:bg-forest data-[state=active]:text-white"
                       >
-                        Monthly
+                        {t.donate.monthly}
                       </TabsTrigger>
                       <TabsTrigger
                         value="one-time"
                         className="data-[state=active]:bg-forest data-[state=active]:text-white"
                       >
-                        One-time
+                        {t.donate.oneTime}
                       </TabsTrigger>
                     </TabsList>
                   </Tabs>
                 </div>
 
-                <p className="section-label text-center mb-6">Choose your impact level</p>
-                <h2 className="text-center mb-16">Pick a tier or enter a custom amount</h2>
+                <p className="section-label text-center mb-6">{t.donate.chooseYourImpactLevel}</p>
+                <h2 className="text-center mb-16">{t.donate.pickATier}</h2>
 
                 {/* Impact Selector Cards */}
                 <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16">
@@ -390,7 +391,7 @@ export default function DonatePage() {
                         {isFeatured && (
                           <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                             <span className="px-4 py-1 bg-white text-forest text-xs font-medium rounded-full">
-                              Most Popular
+                              {t.donate.mostPopular}
                             </span>
                           </div>
                         )}
@@ -454,7 +455,7 @@ export default function DonatePage() {
                                 : 'bg-gray-100 text-gray-700'
                           }`}
                         >
-                          {isSelected || isFeatured ? 'Selected' : 'Select'}
+                          {isSelected || isFeatured ? t.donate.selected : t.donate.select}
                         </div>
                       </motion.div>
                     );
@@ -465,7 +466,7 @@ export default function DonatePage() {
                 <div className="max-w-md mx-auto">
                   <div className="card-ghost p-8">
                     <label className="block text-sm font-medium text-gray-700 mb-4">
-                      Or enter a custom amount
+                      {t.donate.orCustomAmount}
                     </label>
                     <div className="flex gap-3">
                       <div className="relative flex-1">
@@ -494,7 +495,7 @@ export default function DonatePage() {
                     disabled={!donationAmount}
                     className="btn-primary px-12 py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Continue to details
+                    {t.donate.continueToDetails}
                     <ArrowRight className="w-5 h-5" strokeWidth={1.5} />
                   </button>
                 </div>
@@ -512,16 +513,16 @@ export default function DonatePage() {
                 transition={{ duration: 0.3 }}
                 className="max-w-xl mx-auto"
               >
-                <h2 className="text-center mb-4">Your details</h2>
+                <h2 className="text-center mb-4">{t.donate.yourDetails}</h2>
                 <p className="text-center text-gray-500 mb-12">
-                  We use this for receipts and updates.
+                  {t.donate.weUseThisForReceipts}
                 </p>
 
                 {/* Summary Card */}
                 <div className="card-ghost p-8 mb-8">
                   <div className="flex justify-between items-center">
                     <div>
-                      <p className="text-sm text-gray-500 mb-1">Your donation</p>
+                      <p className="text-sm text-gray-500 mb-1">{t.donate.yourDonation}</p>
                       <p className="text-2xl font-serif text-forest">
                         ${donationAmount}
                         <span className="text-base font-sans text-gray-400">
@@ -533,7 +534,7 @@ export default function DonatePage() {
                       onClick={handleBack}
                       className="text-forest hover:text-forest/80 text-sm font-medium"
                     >
-                      Change
+                      {t.donate.change}
                     </button>
                   </div>
                 </div>
@@ -543,7 +544,7 @@ export default function DonatePage() {
                   <div className="grid grid-cols-2 gap-4 mb-4">
                     <div>
                       <label htmlFor="donate-first-name" className="block text-sm font-medium text-gray-700 mb-2">
-                        First name
+                        {t.donate.firstName}
                       </label>
                       <div className="relative">
                         <User
@@ -562,7 +563,7 @@ export default function DonatePage() {
                     </div>
                     <div>
                       <label htmlFor="donate-last-name" className="block text-sm font-medium text-gray-700 mb-2">
-                        Last name
+                        {t.donate.lastName}
                       </label>
                       <input
                         id="donate-last-name"
@@ -577,7 +578,7 @@ export default function DonatePage() {
 
                   <div className="mb-6">
                     <label htmlFor="donate-email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email address
+                      {t.donate.emailAddress}
                     </label>
                     <div className="relative">
                       <Mail
@@ -600,9 +601,9 @@ export default function DonatePage() {
                     <div className="flex items-center gap-3 mb-6">
                       <Bell className="w-5 h-5 text-forest" strokeWidth={1} />
                       <div>
-                        <h4 className="font-medium text-forest">Milestone Updates</h4>
+                        <h4 className="font-medium text-forest">{t.donate.milestoneUpdates}</h4>
                         <p className="text-sm text-gray-500">
-                          Get notified when your contribution creates real impact in the field
+                          {t.donate.milestoneUpdatesDesc}
                         </p>
                       </div>
                     </div>
@@ -626,11 +627,10 @@ export default function DonatePage() {
                       </div>
                       <div className="text-sm">
                         <span className="text-gray-700">
-                          Yes, notify me when project milestones are reached
+                          {t.donate.yesNotifyMe}
                         </span>
                         <p className="text-gray-400 mt-1">
-                          Receive instant updates when trees are planted, communities are trained,
-                          or carbon is verified
+                          {t.donate.receiveInstantUpdates}
                         </p>
                       </div>
                     </label>
@@ -645,8 +645,8 @@ export default function DonatePage() {
                         {/* Phone number for SMS/WhatsApp */}
                         <div>
                           <label htmlFor="donate-phone" className="block text-sm font-medium text-gray-700 mb-2">
-                            Phone number{' '}
-                            <span className="text-gray-400 font-normal">(for SMS/WhatsApp)</span>
+                            {t.donate.phoneNumber}{' '}
+                            <span className="text-gray-400 font-normal">{t.donate.forSmsWhatsapp}</span>
                           </label>
                           <div className="relative">
                             <Phone
@@ -663,21 +663,21 @@ export default function DonatePage() {
                             />
                           </div>
                           <p className="text-xs text-gray-400 mt-1">
-                            Include country code for international numbers
+                            {t.donate.includeCountryCode}
                           </p>
                         </div>
 
                         {/* Notification channel preference */}
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-3">
-                            How would you like to receive updates?
+                            {t.donate.howReceiveUpdates}
                           </label>
                           <div className="grid grid-cols-2 gap-3">
                             {[
-                              { value: 'email', label: 'Email only', icon: Mail },
-                              { value: 'sms', label: 'SMS', icon: Phone },
-                              { value: 'whatsapp', label: 'WhatsApp', icon: MessageCircle },
-                              { value: 'all', label: 'All channels', icon: Bell },
+                              { value: 'email', label: t.donate.emailOnly, icon: Mail },
+                              { value: 'sms', label: t.donate.sms, icon: Phone },
+                              { value: 'whatsapp', label: t.donate.whatsapp, icon: MessageCircle },
+                              { value: 'all', label: t.donate.allChannels, icon: Bell },
                             ].map(({ value, label, icon: Icon }) => (
                               <label
                                 key={value}
@@ -732,14 +732,14 @@ export default function DonatePage() {
                   <div className="flex gap-4 mt-8">
                     <button onClick={handleBack} className="btn-secondary flex-1">
                       <ArrowLeft className="w-4 h-4" strokeWidth={1.5} />
-                      Back
+                      {t.donate.back}
                     </button>
                     <button
                       onClick={handleContinue}
                       disabled={!formData.firstName || !formData.lastName || !formData.email}
                       className="btn-primary flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      Continue to confirm
+                      {t.donate.continueToConfirm}
                       <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
                     </button>
                   </div>
@@ -776,9 +776,9 @@ export default function DonatePage() {
                   </div>
                 ) : (
                   <>
-                    <h2 className="text-center mb-4">Confirm your donation</h2>
+                    <h2 className="text-center mb-4">{t.donate.confirmYourDonation}</h2>
                     <p className="text-center text-gray-500 mb-12">
-                      Review your details and confirm below.
+                      {t.donate.reviewDetails}
                     </p>
 
                     {/* Summary Card with Impact Breakdown */}
@@ -786,10 +786,10 @@ export default function DonatePage() {
                       <div className="flex justify-between items-center mb-6 pb-6 border-b border-forest/10">
                         <div>
                           <p className="font-medium text-forest">
-                            {selectedTierData?.name || 'Custom amount'}
+                            {selectedTierData?.name || t.donate.customAmount}
                           </p>
                           <p className="text-sm text-gray-500">
-                            {frequency === 'monthly' ? 'Monthly' : 'One-time'} donation
+                            {frequency === 'monthly' ? t.donate.monthlyDonation : t.donate.oneTimeDonation} {t.donate.donation}
                           </p>
                         </div>
                         <p className="text-3xl font-serif text-forest">${donationAmount}</p>
@@ -798,22 +798,22 @@ export default function DonatePage() {
                       {/* Impact breakdown */}
                       <div className="space-y-3 mb-6">
                         <div className="flex justify-between text-sm">
-                          <span className="text-gray-500">To community projects</span>
+                          <span className="text-gray-500">{t.donate.toCommunityProjects}</span>
                           <span className="text-forest font-medium">${communityAmount}</span>
                         </div>
                         <div className="flex justify-between text-sm">
-                          <span className="text-gray-500">Operations</span>
+                          <span className="text-gray-500">{t.donate.operations}</span>
                           <span className="text-gray-600">${operationsAmount}</span>
                         </div>
                         <div className="flex justify-between text-sm">
-                          <span className="text-gray-500">Advocacy & research</span>
+                          <span className="text-gray-500">{t.donate.advocacyAndResearch}</span>
                           <span className="text-gray-600">${advocacyAmount}</span>
                         </div>
                       </div>
 
                       <div className="space-y-2 pt-4 border-t border-forest/10 text-sm text-gray-500">
                         <div className="flex justify-between">
-                          <span>Name</span>
+                          <span>{t.donate.name}</span>
                           <span className="text-gray-700">{formData.firstName} {formData.lastName}</span>
                         </div>
                         <div className="flex justify-between">
@@ -825,8 +825,7 @@ export default function DonatePage() {
 
                     <div className="card-ghost p-8">
                       <p className="text-sm text-gray-600 mb-6">
-                        You&apos;ll be redirected to Stripe to complete your donation securely.
-                        Your payment details are handled entirely by Stripe.
+                        {t.donate.stripeRedirect}
                       </p>
 
                       {submitError && (
@@ -838,7 +837,7 @@ export default function DonatePage() {
                       <div className="flex gap-4">
                         <button onClick={handleBack} className="btn-secondary flex-1">
                           <ArrowLeft className="w-4 h-4" strokeWidth={1.5} />
-                          Back
+                          {t.donate.back}
                         </button>
                         <button
                           onClick={handleStripeCheckout}
@@ -846,7 +845,7 @@ export default function DonatePage() {
                           className="btn-primary flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           <Heart className="w-4 h-4" strokeWidth={1.5} />
-                          {isSubmitting ? 'Redirecting…' : `Proceed to secure payment`}
+                          {isSubmitting ? t.donate.redirecting : t.donate.proceedToPayment}
                         </button>
                       </div>
                     </div>
@@ -862,16 +861,16 @@ export default function DonatePage() {
       <section className="py-20 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <Reveal>
-            <p className="section-label text-center mb-6">Our commitment</p>
+            <p className="section-label text-center mb-6">{t.donate.ourCommitment}</p>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <h2 className="text-center mb-8">Integrity you can verify</h2>
+            <h2 className="text-center mb-8">{t.donate.integrityYouCanVerify}</h2>
           </Reveal>
 
           <Reveal delay={0.2}>
             <p className="text-lg text-gray-500 mb-14 text-center max-w-2xl mx-auto">
-              Trust is earned through transparency, not promises.
+              {t.donate.trustEarned}
             </p>
           </Reveal>
 
@@ -879,19 +878,18 @@ export default function DonatePage() {
             {[
               {
                 icon: Shield,
-                title: 'Standards-Aligned',
-                description: 'Working within Verra VCS, Gold Standard, and Plan Vivo frameworks.',
+                title: t.donate.standardsAligned,
+                description: t.donate.standardsAlignedDesc,
               },
               {
                 icon: Eye,
-                title: 'Full Transparency',
-                description:
-                  'Project economics and methodologies documented and available. No hidden fees.',
+                title: t.donate.fullTransparency,
+                description: t.donate.fullTransparencyDesc,
               },
               {
                 icon: FileText,
-                title: 'Regular Reporting',
-                description: 'Quarterly impact reports with detailed allocation breakdowns.',
+                title: t.donate.regularReporting,
+                description: t.donate.regularReportingDesc,
               },
             ].map((item) => (
               <StaggerItem key={item.title}>
@@ -910,7 +908,7 @@ export default function DonatePage() {
       <section className="py-20 md:py-24 bg-sand">
         <div className="max-w-2xl mx-auto px-6 lg:px-8">
           <Reveal>
-            <h2 className="text-center mb-16">Common questions</h2>
+            <h2 className="text-center mb-16">{t.donate.commonQuestions}</h2>
           </Reveal>
 
           <Accordion type="single" collapsible className="space-y-4">
@@ -934,12 +932,12 @@ export default function DonatePage() {
       <section className="py-20 md:py-24 bg-white">
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
           <Reveal>
-            <h2 className="mb-8">Ready to make a difference?</h2>
+            <h2 className="mb-8">{t.donate.readyToMakeDifference}</h2>
           </Reveal>
 
           <Reveal delay={0.1}>
             <p className="text-xl text-gray-500 mb-16 max-w-xl mx-auto">
-              Join supporters building a fairer carbon market that puts communities first.
+              {t.donate.joinSupporters}
             </p>
           </Reveal>
 
@@ -952,11 +950,11 @@ export default function DonatePage() {
                 }}
                 className="btn-pill-primary"
               >
-                Choose your tier
+                {t.donate.chooseYourTier}
                 <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
               </button>
               <Link href="/contact" className="btn-pill-secondary">
-                Talk to our team
+                {t.donate.talkToOurTeam}
                 <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
               </Link>
             </div>

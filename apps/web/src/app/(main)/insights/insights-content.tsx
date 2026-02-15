@@ -5,12 +5,15 @@ import { ArrowRight, BarChart3, Lightbulb, TrendingUp } from 'lucide-react';
 import { HeroSequence, Reveal, StaggerContainer, StaggerItem } from '../../../components/motion';
 import { InsightCard } from '../../../components/insight-card';
 import type { InsightCardData } from '../../../components/insight-card';
+import { useLanguage } from '../../../lib/i18n/language-context';
 
 interface InsightsContentProps {
   insights: InsightCardData[];
 }
 
 export function InsightsContent({ insights }: InsightsContentProps) {
+  const { t } = useLanguage();
+
   return (
     <div className="flex flex-col bg-white text-charcoal">
       {/* Hero Section */}
@@ -20,22 +23,21 @@ export function InsightsContent({ insights }: InsightsContentProps) {
             <div className="max-w-2xl">
               <div className="flex items-center gap-3 mb-6" data-hero>
                 <span className="h-2 w-2 rounded-full bg-leaf" />
-                <span className="section-label-light">Insights</span>
+                <span className="section-label-light">{t.insights.sectionLabel}</span>
               </div>
 
               <h1
                 className="mb-6 text-white text-balance max-w-2xl text-4xl md:text-5xl lg:text-6xl"
                 data-hero
               >
-                Carbon credit insights across Africa.
+                {t.insights.heroHeadline}
               </h1>
 
               <p
                 className="text-base md:text-lg text-white/70 leading-relaxed mb-8 max-w-prose"
                 data-hero
               >
-                Research, analysis, and stories from the front lines of climate finance in Africa.
-                Data-driven perspectives on building equitable carbon markets.
+                {t.insights.heroDescription}
               </p>
             </div>
           </HeroSequence>
@@ -50,17 +52,17 @@ export function InsightsContent({ insights }: InsightsContentProps) {
               {
                 icon: BarChart3,
                 stat: '<5%',
-                label: 'of global carbon revenue reaches Africa',
+                label: t.insights.stat1Label,
               },
               {
                 icon: TrendingUp,
                 stat: '$2B+',
-                label: 'in carbon credits traded from African projects annually',
+                label: t.insights.stat2Label,
               },
               {
                 icon: Lightbulb,
                 stat: '90%',
-                label: 'of benefits leave the communities where carbon is stored',
+                label: t.insights.stat3Label,
               },
             ].map((item) => (
               <StaggerItem key={item.label}>
@@ -83,12 +85,12 @@ export function InsightsContent({ insights }: InsightsContentProps) {
       <section className="py-14 md:py-20 bg-chalk">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <Reveal>
-            <p className="section-label mb-4">Latest insights</p>
+            <p className="section-label mb-4">{t.insights.latestInsights}</p>
             <div className="divider-editorial mt-4" />
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="mb-12 text-ink max-w-2xl">
-              Research and analysis from the field.
+              {t.insights.researchAndAnalysis}
             </h2>
           </Reveal>
 
@@ -107,23 +109,22 @@ export function InsightsContent({ insights }: InsightsContentProps) {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <Reveal>
             <h2 className="mb-6 text-ink max-w-2xl mx-auto">
-              Want to receive our latest research?
+              {t.insights.wantResearch}
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="text-charcoal/70 max-w-prose mx-auto mb-8">
-              Stay informed with data-driven insights on carbon markets, community impact, and
-              policy developments across Africa.
+              {t.insights.stayInformed}
             </p>
           </Reveal>
           <Reveal delay={0.2}>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/contact" className="btn-primary">
-                Get in touch
+                {t.insights.getInTouch}
                 <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
               </Link>
               <Link href="/work" className="btn-ghost">
-                View our advocacy work
+                {t.insights.viewAdvocacy}
               </Link>
             </div>
           </Reveal>

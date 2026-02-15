@@ -11,33 +11,34 @@ import {
 } from 'lucide-react';
 import { HeroSequence, Reveal, StaggerContainer, StaggerItem } from '../../../components/motion';
 import { Card } from '../../../components/ui/card';
-
-const projects = [
-  {
-    slug: 'salima-agroforestry',
-    name: 'Iringa Agroforestry Pilot',
-    location: 'Iringa District, Tanzania',
-    status: 'Exploring',
-    type: 'Agroforestry',
-    description:
-      'We are exploring an agroforestry pilot in Iringa District that would integrate trees into smallholder farming landscapes. The goal is to demonstrate how community-led agroforestry can build carbon sequestration capacity while improving livelihoods.',
-    standards: ['Plan Vivo', 'Gold Standard'],
-    aspiration: 'Community-led agroforestry integrated with smallholder farming systems.',
-  },
-  {
-    slug: 'nkhotakota-restoration',
-    name: 'Morogoro Forest Restoration',
-    location: 'Morogoro District, Tanzania',
-    status: 'Exploring',
-    type: 'Forest Restoration',
-    description:
-      'We are investigating a forest restoration opportunity in Morogoro District, working with local communities on indigenous species reforestation and sustainable livelihood development around degraded forest areas.',
-    standards: ['Verra VCS'],
-    aspiration: 'Community-managed reforestation with indigenous species and livelihood co-benefits.',
-  },
-];
+import { useLanguage } from '../../../lib/i18n/language-context';
 
 export default function ProjectsPage() {
+  const { t } = useLanguage();
+
+  const projects = [
+    {
+      slug: 'salima-agroforestry',
+      name: t.projects.iringaPilot,
+      location: t.projects.iringaLocation,
+      status: t.projects.exploring,
+      type: t.projects.agroforestry,
+      description: t.projects.iringaDescription,
+      standards: ['Plan Vivo', 'Gold Standard'],
+      aspiration: t.projects.iringaAspiration,
+    },
+    {
+      slug: 'nkhotakota-restoration',
+      name: t.projects.morogoroPilot,
+      location: t.projects.morogoroLocation,
+      status: t.projects.exploring,
+      type: t.projects.forestRestoration,
+      description: t.projects.morogoroDescription,
+      standards: ['Verra VCS'],
+      aspiration: t.projects.morogoroAspiration,
+    },
+  ];
+
   return (
     <div className="flex flex-col bg-white text-charcoal">
       {/* Hero Section */}
@@ -47,32 +48,30 @@ export default function ProjectsPage() {
             <div className="max-w-2xl">
               <div className="flex items-center gap-3 mb-6" data-hero>
                 <span className="h-2 w-2 rounded-full bg-leaf" />
-                <span className="section-label-light">Projects</span>
+                <span className="section-label-light">{t.projects.sectionLabel}</span>
               </div>
 
               <h1
                 className="mb-6 text-white text-balance max-w-2xl text-4xl md:text-5xl lg:text-6xl"
                 data-hero
               >
-                Building pilots that put communities first.
+                {t.projects.heroHeadline}
               </h1>
 
               <p
                 className="text-base md:text-lg text-white/70 leading-relaxed mb-8 max-w-prose"
                 data-hero
               >
-                We are designing community-led carbon pilots with a nonprofit motive. Our
-                approach ensures that if and when projects launch, benefits flow directly to
-                the communities where carbon is stored.
+                {t.projects.heroDescription}
               </p>
 
               <div className="flex flex-wrap gap-4" data-hero>
                 <Link href="/partners" className="btn-primary">
-                  Partner with us
+                  {t.projects.partnerWithUs}
                   <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
                 </Link>
                 <Link href="/contact" className="btn-secondary">
-                  Discuss a project
+                  {t.projects.discussAProject}
                 </Link>
               </div>
             </div>
@@ -87,18 +86,18 @@ export default function ProjectsPage() {
             {[
               {
                 icon: Users,
-                title: 'Community ownership',
-                desc: 'Every project is designed with and for local communities. They lead, we support.',
+                title: t.projects.communityOwnership,
+                desc: t.projects.communityOwnershipDesc,
               },
               {
                 icon: ShieldCheck,
-                title: 'Nonprofit motive',
-                desc: 'No profit extraction. Revenue stays in the community for development and conservation.',
+                title: t.projects.nonprofitMotive,
+                desc: t.projects.nonprofitMotiveDesc,
               },
               {
                 icon: Target,
-                title: 'Standards aligned',
-                desc: 'All projects align with international standards for credibility and market access.',
+                title: t.projects.standardsAligned,
+                desc: t.projects.standardsAlignedDesc,
               },
             ].map((item) => (
               <StaggerItem key={item.title}>
@@ -121,12 +120,12 @@ export default function ProjectsPage() {
       <section className="py-14 md:py-20 bg-chalk">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <Reveal>
-            <p className="section-label mb-4">Our projects</p>
+            <p className="section-label mb-4">{t.projects.ourProjects}</p>
             <div className="divider-editorial mt-4" />
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="mb-12 text-ink max-w-2xl">
-              Pilot areas we are exploring.
+              {t.projects.pilotAreasExploring}
             </h2>
           </Reveal>
 
@@ -163,7 +162,7 @@ export default function ProjectsPage() {
 
                       <div className="flex flex-wrap gap-2">
                         <span className="text-xs px-2.5 py-1 rounded-full border border-charcoal/15 text-charcoal/60">
-                          Standards being evaluated:
+                          {t.projects.standardsBeingEvaluated}
                         </span>
                         {project.standards.map((standard) => (
                           <span
@@ -189,15 +188,12 @@ export default function ProjectsPage() {
                 </div>
                 <div>
                   <h3 className="text-lg font-display font-semibold text-forest mb-2">
-                    Early stage, by design
+                    {t.projects.earlyStageByDesign}
                   </h3>
                   <p className="text-sm text-charcoal/70 max-w-prose">
-                    These pilots are in early exploration. We are still applying for land access,
-                    consulting with communities, and building the governance systems needed before
-                    any project launches. We will share updates here as things progress. If you&apos;re
-                    interested in partnering,{' '}
+                    {t.projects.earlyStageDesc}{' '}
                     <Link href="/contact" className="text-forest underline underline-offset-2">
-                      get in touch
+                      {t.projects.getInTouch}
                     </Link>
                     .
                   </p>
@@ -213,23 +209,22 @@ export default function ProjectsPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <Reveal>
             <h2 className="mb-6 text-ink max-w-2xl mx-auto">
-              Help us build credible pilots.
+              {t.projects.helpBuildPilots}
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="text-charcoal/70 max-w-prose mx-auto mb-8">
-              Whether you&apos;re a funder, MRV provider, community leader, or technical partner,
-              there&apos;s a role for you in building Tanzania&apos;s carbon finance infrastructure.
+              {t.projects.helpBuildPilotsDesc}
             </p>
           </Reveal>
           <Reveal delay={0.2}>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/partners" className="btn-primary">
-                Become a partner
+                {t.projects.becomePartner}
                 <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
               </Link>
               <Link href="/integrity" className="btn-ghost">
-                Our integrity framework
+                {t.projects.ourIntegrityFramework}
               </Link>
             </div>
           </Reveal>

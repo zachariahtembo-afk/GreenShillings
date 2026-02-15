@@ -2,6 +2,7 @@
 
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { Loader2, Check, AlertCircle } from 'lucide-react';
+import { useLanguage } from '../lib/i18n/language-context';
 
 type FormState = {
   fullName: string;
@@ -31,13 +32,16 @@ const initialState: FormState = {
 
 export function ContactForm({
   source,
-  submitLabel = 'Send message',
+  submitLabel,
   className = '',
 }: ContactFormProps) {
+  const { t } = useLanguage();
   const [form, setForm] = useState<FormState>(initialState);
   const [status, setStatus] = useState<Status>('idle');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const endpoint = '/api/contact';
+
+  const resolvedSubmitLabel = submitLabel || t.contactForm.sendMessage;
 
   const handleChange =
     (field: keyof FormState) => (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -78,7 +82,7 @@ export function ContactForm({
       setStatus('success');
     } catch (error) {
       console.error('Failed to submit contact form', error);
-      setErrorMessage('Something went wrong. Please try again or email us directly.');
+      setErrorMessage(t.contactForm.errorMessage);
       setStatus('error');
     }
   };
@@ -90,15 +94,15 @@ export function ContactForm({
           <div className="w-12 h-12 rounded-full bg-leaf flex items-center justify-center mx-auto mb-5">
             <Check className="h-6 w-6 text-charcoal" strokeWidth={1.5} />
           </div>
-          <h3 className="text-lg font-semibold text-charcoal mb-2">Message sent</h3>
+          <h3 className="text-lg font-semibold text-charcoal mb-2">{t.contactForm.messageSent}</h3>
           <p className="text-gray-600 mb-6">
-            Thank you for reaching out. We typically respond within one week.
+            {t.contactForm.thankYou}
           </p>
           <button
             onClick={() => setStatus('idle')}
             className="text-sm text-forest hover:text-forest-600 font-semibold transition-colors"
           >
-            Send another message
+            {t.contactForm.sendAnother}
           </button>
         </div>
       </div>
@@ -114,7 +118,7 @@ export function ContactForm({
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
-            Full name <span className="text-red-500">*</span>
+            {t.contactForm.fullName} <span className="text-red-500">*</span>
           </label>
           <input
             id="fullName"
@@ -123,12 +127,12 @@ export function ContactForm({
             value={form.fullName}
             onChange={handleChange('fullName')}
             className={inputClasses}
-            placeholder="Your name"
+            placeholder={t.contactForm.yourName}
           />
         </div>
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-            Email <span className="text-red-500">*</span>
+            {t.contactForm.email} <span className="text-red-500">*</span>
           </label>
           <input
             id="email"
@@ -146,7 +150,7 @@ export function ContactForm({
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="organization" className="block text-sm font-medium text-gray-700 mb-2">
-            Organization
+            {t.contactForm.organization}
           </label>
           <input
             id="organization"
@@ -154,12 +158,12 @@ export function ContactForm({
             value={form.organization}
             onChange={handleChange('organization')}
             className={inputClasses}
-            placeholder="Your organization"
+            placeholder={t.contactForm.yourOrg}
           />
         </div>
         <div>
           <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-2">
-            Role
+            {t.contactForm.role}
           </label>
           <input
             id="role"
@@ -167,7 +171,7 @@ export function ContactForm({
             value={form.role}
             onChange={handleChange('role')}
             className={inputClasses}
-            placeholder="Your role"
+            placeholder={t.contactForm.yourRole}
           />
         </div>
       </div>
@@ -175,7 +179,7 @@ export function ContactForm({
       {/* Message */}
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-          Message <span className="text-red-500">*</span>
+          {t.contactForm.message} <span className="text-red-500">*</span>
         </label>
         <textarea
           id="message"
@@ -184,7 +188,7 @@ export function ContactForm({
           value={form.message}
           onChange={handleChange('message')}
           className={`${inputClasses} resize-none`}
-          placeholder="How can we help? Tell us about your interest in GREENSHILLING."
+          placeholder={t.contactForm.messagePlaceholder}
         />
       </div>
 
@@ -205,10 +209,10 @@ export function ContactForm({
         {status === 'submitting' ? (
           <>
             <Loader2 className="h-4 w-4 animate-spin" />
-            Sending...
+            {t.contactForm.sending}
           </>
         ) : (
-          submitLabel
+          resolvedSubmitLabel
         )}
       </button>
     </form>

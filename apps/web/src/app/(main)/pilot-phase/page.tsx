@@ -5,8 +5,11 @@ import { ArrowRight, ClipboardList, Users, Database, Wallet, Shield } from 'luci
 import { HeroSequence, Reveal, StaggerContainer, StaggerItem } from '../../../components/motion';
 import { StatsGrid } from '../../../components/stats-grid';
 import { Card } from '../../../components/ui/card';
+import { useLanguage } from '../../../lib/i18n/language-context';
 
 export default function PilotPhasePage() {
+  const { t } = useLanguage();
+
   return (
     <div className="flex flex-col bg-white text-charcoal">
       {/* Hero */}
@@ -16,28 +19,27 @@ export default function PilotPhasePage() {
             <div className="max-w-2xl">
               <div className="flex items-center gap-3 mb-6 text-forest/70" data-hero>
                 <span className="h-2 w-2 rounded-full bg-citrus" />
-                <span className="section-label">Pilot phase · In progress</span>
+                <span className="section-label">{t.pilotPhase.sectionLabel}</span>
               </div>
 
               <h1 className="mb-6 text-ink text-balance text-4xl md:text-5xl lg:text-6xl" data-hero>
-                Building the pilots that prove fair value sharing.
+                {t.pilotPhase.heroHeadline}
               </h1>
 
               <p
                 className="text-base md:text-lg text-charcoal/70 leading-relaxed mb-8 max-w-prose"
                 data-hero
               >
-                We are registering pilot projects, preparing community governance, and aligning MRV
-                partnerships so the first pilots can launch with full transparency.
+                {t.pilotPhase.heroDescription}
               </p>
 
               <div className="flex flex-wrap gap-4" data-hero>
                 <Link href="/partners" className="btn-primary">
-                  Partner with the pilots
+                  {t.pilotPhase.partnerWithPilots}
                   <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
                 </Link>
                 <Link href="/donate" className="btn-secondary">
-                  Support pilot setup
+                  {t.pilotPhase.supportPilotSetup}
                 </Link>
               </div>
             </div>
@@ -50,20 +52,19 @@ export default function PilotPhasePage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid gap-8 md:grid-cols-2">
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-leaf/70 mb-3">Status</p>
-              <p className="text-2xl md:text-3xl font-display text-white mb-2">Registration underway</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-leaf/70 mb-3">{t.pilotPhase.status}</p>
+              <p className="text-2xl md:text-3xl font-display text-white mb-2">{t.pilotPhase.registrationUnderway}</p>
               <p className="text-sm text-white/70 max-w-prose">
-                We are compiling FPIC documentation, baseline data, and implementation plans for first
-                pilots.
+                {t.pilotPhase.registrationDesc}
               </p>
             </div>
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-white/50 mb-3">
-                Built for integrity
+                {t.pilotPhase.builtForIntegrity}
               </p>
-              <p className="text-lg font-semibold text-white mb-2">Evidence-first implementation</p>
+              <p className="text-lg font-semibold text-white mb-2">{t.pilotPhase.evidenceFirstImpl}</p>
               <p className="text-sm text-white/70 max-w-prose">
-                Every pilot is structured for transparent data capture and shared governance.
+                {t.pilotPhase.evidenceFirstImplDesc}
               </p>
             </div>
           </div>
@@ -74,38 +75,34 @@ export default function PilotPhasePage() {
       <section className="py-14 md:py-20 bg-chalk">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <Reveal>
-            <p className="section-label mb-4">What we are building</p>
+            <p className="section-label mb-4">{t.pilotPhase.whatWeAreBuilding}</p>
             <div className="divider-editorial mt-4" />
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="mb-12 text-ink max-w-2xl">Pilot infrastructure in progress.</h2>
+            <h2 className="mb-12 text-ink max-w-2xl">{t.pilotPhase.pilotInfrastructure}</h2>
           </Reveal>
 
           <StaggerContainer className="grid gap-6 md:grid-cols-2" staggerDelay={0.1}>
             {[
               {
                 icon: ClipboardList,
-                title: 'Project registration',
-                description:
-                  'Registering pilot projects with documentation, baseline data, and clear benefit-sharing terms.',
+                title: t.pilotPhase.projectRegistration,
+                description: t.pilotPhase.projectRegistrationDesc,
               },
               {
                 icon: Users,
-                title: 'Community onboarding',
-                description:
-                  'Building governance councils, consent records, and feedback loops before implementation starts.',
+                title: t.pilotPhase.communityOnboarding,
+                description: t.pilotPhase.communityOnboardingDesc,
               },
               {
                 icon: Database,
-                title: 'MRV integrations',
-                description:
-                  'Preparing partnerships with MRV providers and satellite data teams for transparent reporting.',
+                title: t.pilotPhase.mrvIntegrations,
+                description: t.pilotPhase.mrvIntegrationsDesc,
               },
               {
                 icon: Wallet,
-                title: 'Payout rails',
-                description:
-                  'Designing clear distribution rules and payment pathways that keep value close to communities.',
+                title: t.pilotPhase.payoutRails,
+                description: t.pilotPhase.payoutRailsDesc,
               },
             ].map((item) => (
               <StaggerItem key={item.title}>
@@ -126,31 +123,31 @@ export default function PilotPhasePage() {
       <section className="py-14 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <Reveal>
-            <p className="section-label mb-4">Pilot targets</p>
+            <p className="section-label mb-4">{t.pilotPhase.pilotTargets}</p>
             <div className="divider-editorial mt-4" />
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="mb-10 text-ink max-w-2xl">
-              Targets for the pilot phase (not yet delivered).
+              {t.pilotPhase.targetsForPilotPhase}
             </h2>
           </Reveal>
 
           <StatsGrid
             items={[
               {
-                value: '2 pilot sites',
-                label: 'Registration targets',
-                note: 'In progress — site selection underway.',
+                value: t.pilotPhase.pilotSites,
+                label: t.pilotPhase.registrationTargets,
+                note: t.pilotPhase.registrationTargetsNote,
               },
               {
-                value: 'Community councils',
-                label: 'Local governance structures',
-                note: 'Being assembled with FPIC processes.',
+                value: t.pilotPhase.communityCounsils,
+                label: t.pilotPhase.localGovernanceStructures,
+                note: t.pilotPhase.localGovernanceNote,
               },
               {
-                value: 'MRV-ready',
-                label: 'Verification partnerships',
-                note: 'Integrations preparing for launch.',
+                value: t.pilotPhase.mrvReady,
+                label: t.pilotPhase.verificationPartnerships,
+                note: t.pilotPhase.verificationNote,
               },
             ]}
             columns={3}
@@ -164,19 +161,17 @@ export default function PilotPhasePage() {
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-start">
             <div>
               <Reveal>
-                <p className="section-label mb-4">Locally led governance</p>
+                <p className="section-label mb-4">{t.pilotPhase.locallyLedGovernance}</p>
                 <div className="divider-editorial mt-4" />
               </Reveal>
               <Reveal delay={0.1}>
                 <h2 className="mb-6 text-ink">
-                  Communities capture value, not just participation.
+                  {t.pilotPhase.communitiesCaptureValue}
                 </h2>
               </Reveal>
               <Reveal delay={0.2}>
                 <p className="text-lg text-gray-600 leading-relaxed max-w-prose">
-                  The pilot phase prioritizes community decision rights, transparent budget
-                  disclosures, and shared oversight. Each pilot is designed with communities as
-                  co-owners of the work and the benefits it generates.
+                  {t.pilotPhase.locallyLedGovernanceDesc}
                 </p>
               </Reveal>
             </div>
@@ -186,11 +181,11 @@ export default function PilotPhasePage() {
                   <Shield className="h-5 w-5" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h3 className="text-lg text-forest mb-2">Integrity checkpoints</h3>
+                  <h3 className="text-lg text-forest mb-2">{t.pilotPhase.integrityCheckpoints}</h3>
                   <ul className="space-y-3 text-sm text-gray-600">
-                    <li>Documented consent and governance agreements.</li>
-                    <li>Transparent budget and benefit-sharing terms.</li>
-                    <li>Audit-ready data capture for verification partners.</li>
+                    <li>{t.pilotPhase.checkpoint1}</li>
+                    <li>{t.pilotPhase.checkpoint2}</li>
+                    <li>{t.pilotPhase.checkpoint3}</li>
                   </ul>
                 </div>
               </div>

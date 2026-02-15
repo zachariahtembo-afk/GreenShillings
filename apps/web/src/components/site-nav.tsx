@@ -4,13 +4,15 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { X, Heart } from 'lucide-react';
-import { navLinks } from '../lib/nav-links';
+import { getNavLinks } from '../lib/nav-links';
 import { cn } from '../lib/utils';
 import { NucleoIcon } from './nucleo-icon';
 import { BrandLogo } from './brand-logo';
+import { useLanguage } from '../lib/i18n/language-context';
 
 export function SiteNav() {
   const pathname = usePathname();
+  const { language, toggleLanguage, t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -29,8 +31,9 @@ export function SiteNav() {
     return pathname === href;
   };
 
+  const translatedNavLinks = getNavLinks(t);
   // Filter out donate from main nav links since it will be a CTA button
-  const mainNavLinks = navLinks.filter((link) => link.href !== '/donate');
+  const mainNavLinks = translatedNavLinks.filter((link) => link.href !== '/donate');
 
   return (
     <header
@@ -67,12 +70,22 @@ export function SiteNav() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3 md:justify-self-end">
+          {/* Language Toggle */}
+          <button
+            onClick={toggleLanguage}
+            className="flex items-center gap-1 rounded-full border border-forest/15 px-3 py-1.5 text-xs font-semibold tracking-wide text-charcoal/70 hover:border-forest/30 hover:text-forest transition-all duration-300"
+            aria-label={`Switch to ${language === 'en' ? 'Swahili' : 'English'}`}
+          >
+            <span className={language === 'en' ? 'text-forest' : 'text-charcoal/40'}>{t.languageToggle.en}</span>
+            <span className="text-charcoal/30">/</span>
+            <span className={language === 'sw' ? 'text-forest' : 'text-charcoal/40'}>{t.languageToggle.sw}</span>
+          </button>
           <Link href="/portal/login" className="btn-primary text-sm px-4 py-2">
-            Partner login
+            {t.nav.partnerLogin}
           </Link>
           <Link href="/donate" className="btn-primary text-sm px-4 py-2">
             <Heart className="w-4 h-4" strokeWidth={1} />
-            Donate
+            {t.nav.donate}
           </Link>
         </div>
 
@@ -122,15 +135,30 @@ export function SiteNav() {
               className="btn-primary text-base px-6 py-3"
             >
               <Heart className="w-5 h-5" strokeWidth={1} />
-              Donate
+              {t.nav.donate}
             </Link>
             <Link
               href="/portal/login"
               onClick={() => setMobileMenuOpen(false)}
               className="btn-primary text-base px-6 py-3"
             >
-              Partner login
+              {t.nav.partnerLogin}
             </Link>
+          </div>
+
+          {/* Mobile Language Toggle */}
+          <div className="pt-4">
+            <button
+              onClick={() => {
+                toggleLanguage();
+                setMobileMenuOpen(false);
+              }}
+              className="flex items-center gap-1.5 rounded-full border border-forest/15 px-4 py-2 text-sm font-semibold text-charcoal/70 hover:border-forest/30 hover:text-forest transition-all"
+            >
+              <span className={language === 'en' ? 'text-forest' : 'text-charcoal/40'}>{t.languageToggle.en}</span>
+              <span className="text-charcoal/30">/</span>
+              <span className={language === 'sw' ? 'text-forest' : 'text-charcoal/40'}>{t.languageToggle.sw}</span>
+            </button>
           </div>
 
           <div className="pt-6 mt-4 border-t border-forest/10" />
