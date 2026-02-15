@@ -8,7 +8,7 @@ bundle:
 resources:
   jobs:
     rfp_analyzer:
-      name: "GreenShillings RFP Analyzer"
+      name: "GreenShilling RFP Analyzer"
       tasks:
         - task_key: analyze_rfp
           notebook_task:

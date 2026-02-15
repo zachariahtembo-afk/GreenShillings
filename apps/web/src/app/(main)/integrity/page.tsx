@@ -188,7 +188,7 @@ export default function IntegrityPage() {
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <QuoteBlock
             quote="We will only report verified outcomes. Until then, we focus on building the governance, data, and transparency systems that make verification possible."
-            author="GreenShillings"
+            author="GreenShilling"
             role="Integrity statement"
           />
         </div>

@@ -224,7 +224,7 @@ export default function NewGrantPage() {
                 type="text"
                 value={form.assignedTo}
                 onChange={handleChange}
-                placeholder="e.g., team-member@greenshillings.org"
+                placeholder="e.g., team-member@greenshilling.org"
               />
 
               {/* Description */}

@@ -184,7 +184,7 @@ export function ContactForm({
           value={form.message}
           onChange={handleChange('message')}
           className={`${inputClasses} resize-none`}
-          placeholder="How can we help? Tell us about your interest in GREENSHILLINGS."
+          placeholder="How can we help? Tell us about your interest in GREENSHILLING."
         />
       </div>
 

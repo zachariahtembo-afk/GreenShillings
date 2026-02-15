@@ -107,7 +107,7 @@ export default function AdvocacyPage() {
         </div>
       </section>
 
-      {/* GreenShillings's Solution */}
+      {/* GreenShilling's Solution */}
       <section className="py-14 md:py-20 bg-green-tint">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <Reveal>
@@ -116,7 +116,7 @@ export default function AdvocacyPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="mb-6 text-ink max-w-2xl">
-              GreenShillings exists to close the gap.
+              GreenShilling exists to close the gap.
             </h2>
           </Reveal>
           <Reveal delay={0.15}>

@@ -27,7 +27,7 @@ export default async function PortalProjectsPage() {
   const session = (await auth()) as SessionWithPortal;
   if (!session?.user?.email) redirect('/portal/login');
 
-  // Projects are GreenShillings's own pilot projects (shared portfolio items), not
+  // Projects are GreenShilling's own pilot projects (shared portfolio items), not
   // per-organization resources. The Project model has no organizationId field, so
   // all authenticated portal users -- staff and partners alike -- see every project.
   // This is intentional: partners need visibility into the full project portfolio.

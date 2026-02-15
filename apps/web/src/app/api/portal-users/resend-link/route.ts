@@ -8,7 +8,7 @@ const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
   : null;
 const fromAddress =
-  process.env.CONTACT_FROM_EMAIL || 'GreenShillings <hello@greenshillings.org>';
+  process.env.CONTACT_FROM_EMAIL || 'GreenShilling <hello@greenshilling.org>';
 
 export async function POST(request: NextRequest) {
   const session = await auth();
@@ -60,17 +60,17 @@ export async function POST(request: NextRequest) {
     if (resend) {
       try {
         const appUrl =
-          process.env.NEXT_PUBLIC_APP_URL || 'https://greenshillings.org';
+          process.env.NEXT_PUBLIC_APP_URL || 'https://greenshilling.org';
         const loginLink = `${appUrl}/portal/login?token=${magicLinkToken}`;
 
         await resend.emails.send({
           from: fromAddress,
           to: [portalUser.email],
-          subject: 'Your new GREENSHILLINGS Portal login link',
+          subject: 'Your new GREENSHILLING Portal login link',
           html: `
             <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
               <h2 style="color: #1B7A3D;">Hello, ${portalUser.name}!</h2>
-              <p>A new login link has been generated for your GREENSHILLINGS Partner Portal account.</p>
+              <p>A new login link has been generated for your GREENSHILLING Partner Portal account.</p>
               <p>Click the link below to log in:</p>
               <p style="margin: 24px 0;">
                 <a href="${loginLink}" style="background: #1B7A3D; color: #fff; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold;">
@@ -80,8 +80,8 @@ export async function POST(request: NextRequest) {
               <p style="color: #666; font-size: 14px;">This link will expire in 7 days. If you did not request this link, please ignore this email.</p>
               <hr style="border: none; border-top: 2px solid #1B7A3D; margin-top: 24px;" />
               <p style="font-size: 12px; color: #999;">
-                GREENSHILLINGS &mdash; Equitable Carbon Finance for Tanzania<br />
-                hello@greenshillings.org
+                GREENSHILLING &mdash; Equitable Carbon Finance for Tanzania<br />
+                hello@greenshilling.org
               </p>
             </div>
           `,

@@ -1,4 +1,4 @@
-// GREENSHILLINGS Design System - UI Components
+// GREENSHILLING Design System - UI Components
 // World-class, institutional-grade component library
 
 // Core components

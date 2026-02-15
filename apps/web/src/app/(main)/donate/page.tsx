@@ -88,7 +88,7 @@ const faqs = [
   },
   {
     q: 'Is my donation tax-deductible?',
-    a: 'GreenShillings is a registered non-profit. Tax deductibility depends on your jurisdiction.',
+    a: 'GreenShilling is a registered non-profit. Tax deductibility depends on your jurisdiction.',
   },
   {
     q: 'How will I know my impact?',

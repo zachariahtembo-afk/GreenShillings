@@ -187,7 +187,7 @@ function LoginContent() {
         <p className="text-sm text-charcoal/60 text-center">
           Partners: use the credentials provided in your invitation email.
           <br />
-          Staff: sign in with your <strong>@greenshillings.org</strong> Google account.
+          Staff: sign in with your <strong>@greenshilling.org</strong> Google account.
         </p>
       </div>
     </div>
@@ -205,7 +205,7 @@ export default function PortalLoginPage() {
           </Link>
           <h1 className="text-2xl font-bold text-charcoal mb-2">Team Portal</h1>
           <p className="text-charcoal/70">
-            Sign in to access the Green Shillings portal
+            Sign in to access the Green Shilling portal
           </p>
         </div>
 

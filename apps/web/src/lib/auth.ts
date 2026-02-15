@@ -94,9 +94,9 @@ export const {
   ],
   callbacks: {
     signIn({ account, profile }) {
-      // Restrict Google to @greenshillings.org domain
+      // Restrict Google to @greenshilling.org domain
       if (account?.provider === 'google') {
-        return profile?.email?.endsWith('@greenshillings.org') ?? false;
+        return profile?.email?.endsWith('@greenshilling.org') ?? false;
       }
       // Allow Credentials providers
       return true;
@@ -152,14 +152,14 @@ export interface PortalUser {
 export function sessionToPortalUser(session: SessionWithPortal | null): PortalUser | null {
   if (!session?.user?.email) return null;
 
-  const isStaff = session.user.email.endsWith('@greenshillings.org');
+  const isStaff = session.user.email.endsWith('@greenshilling.org');
   const isPartner = session.role === 'PARTNER';
 
   return {
     id: session.user.email,
     email: session.user.email,
     name: session.user.name || 'Team Member',
-    organization: session.organizationName || 'GREENSHILLINGS',
+    organization: session.organizationName || 'GREENSHILLING',
     role: isStaff ? 'admin' : isPartner ? 'partner' : 'admin',
     accessLevel: isStaff ? 'elevated' : 'standard',
   };
@@ -171,9 +171,9 @@ export interface InternalUser {
   name: string;
 }
 
-// Helper to convert NextAuth session to InternalUser (requires @greenshillings.org)
+// Helper to convert NextAuth session to InternalUser (requires @greenshilling.org)
 export function sessionToInternalUser(session: { user?: { name?: string | null; email?: string | null; image?: string | null } } | null): InternalUser | null {
-  if (!session?.user?.email?.endsWith('@greenshillings.org')) return null;
+  if (!session?.user?.email?.endsWith('@greenshilling.org')) return null;
 
   return {
     email: session.user.email,
@@ -183,5 +183,5 @@ export function sessionToInternalUser(session: { user?: { name?: string | null; 
 
 // Helper to check if current session is admin/staff
 export function isStaffSession(session: SessionWithPortal | null): boolean {
-  return !!session?.user?.email?.endsWith('@greenshillings.org');
+  return !!session?.user?.email?.endsWith('@greenshilling.org');
 }

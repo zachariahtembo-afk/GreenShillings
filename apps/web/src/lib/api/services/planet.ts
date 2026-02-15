@@ -1,5 +1,5 @@
 /**
- * GREENSHILLINGS Planet Labs Integration
+ * GREENSHILLING Planet Labs Integration
  *
  * Provides satellite imagery and environmental monitoring for project verification.
  * Part of the "Integrity Engine" - allowing transparent verification of

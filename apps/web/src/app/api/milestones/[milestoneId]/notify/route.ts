@@ -58,7 +58,7 @@ export async function POST(
     }
 
     // Create NotificationLog entries with status PENDING
-    const messageBody = `GREENSHILLINGS Update: ${milestone.title} - ${milestone.description}`;
+    const messageBody = `GREENSHILLING Update: ${milestone.title} - ${milestone.description}`;
 
     const notificationData = subscriptions.map((sub) => ({
       donorId: sub.donor.id,

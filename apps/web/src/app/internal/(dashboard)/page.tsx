@@ -77,7 +77,7 @@ export default async function InternalDashboardPage() {
             Welcome, {firstName}
           </h1>
           <p className="text-sm text-charcoal/60 mt-1">
-            Here&apos;s what&apos;s happening across GreenShillings today.
+            Here&apos;s what&apos;s happening across GreenShilling today.
           </p>
         </div>
         <Button

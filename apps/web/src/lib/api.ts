@@ -1,4 +1,4 @@
-// GREENSHILLINGS API Client
+// GREENSHILLING API Client
 // Minimal API client for advocacy-led NGO website
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {

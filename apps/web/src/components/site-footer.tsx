@@ -94,13 +94,13 @@ export function SiteFooter() {
         <div className="mt-14 pt-8 border-t border-white/15">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <p className="text-sm text-white/60">
-              &copy; {new Date().getFullYear()} GREENSHILLINGS. Registered NGO in Tanzania.
+              &copy; {new Date().getFullYear()} GREENSHILLING. Registered NGO in Tanzania.
             </p>
             <a
-              href="mailto:hello@greenshillings.org"
+              href="mailto:hello@greenshilling.org"
               className="text-sm text-leaf hover:text-white transition-colors duration-300"
             >
-              hello@greenshillings.org
+              hello@greenshilling.org
             </a>
           </div>
         </div>

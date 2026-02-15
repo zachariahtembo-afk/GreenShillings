@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 import './globals.css';
 
-const siteUrl = 'https://greenshillings.org';
+const siteUrl = 'https://greenshilling.org';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -13,11 +13,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'GREENSHILLINGS | Advocacy-led Climate Action for Tanzania',
-    template: '%s | GREENSHILLINGS',
+    default: 'GREENSHILLING | Advocacy-led Climate Action for Tanzania',
+    template: '%s | GREENSHILLING',
   },
   description:
-    'GREENSHILLINGS is an advocacy-led climate organization in Tanzania, building locally led pilot projects and integrity infrastructure for carbon finance.',
+    'GREENSHILLING is an advocacy-led climate organization in Tanzania, building locally led pilot projects and integrity infrastructure for carbon finance.',
   keywords: [
     'carbon finance',
     'Tanzania',
@@ -29,9 +29,9 @@ export const metadata: Metadata = {
     'carbon market reform',
     'equitable climate finance',
   ],
-  authors: [{ name: 'GREENSHILLINGS' }],
-  creator: 'GREENSHILLINGS',
-  publisher: 'GREENSHILLINGS',
+  authors: [{ name: 'GREENSHILLING' }],
+  creator: 'GREENSHILLING',
+  publisher: 'GREENSHILLING',
   formatDetection: {
     email: false,
     address: false,
@@ -41,24 +41,24 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: siteUrl,
-    siteName: 'GREENSHILLINGS',
-    title: 'GREENSHILLINGS | Advocacy-led Climate Action for Tanzania',
+    siteName: 'GREENSHILLING',
+    title: 'GREENSHILLING | Advocacy-led Climate Action for Tanzania',
     description:
-      'GREENSHILLINGS is an advocacy-led climate organization in Tanzania, building locally led pilot projects and integrity infrastructure for carbon finance.',
+      'GREENSHILLING is an advocacy-led climate organization in Tanzania, building locally led pilot projects and integrity infrastructure for carbon finance.',
     images: [
       {
         url: `${siteUrl}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: 'GREENSHILLINGS - Advocacy-led climate action for Tanzania',
+        alt: 'GREENSHILLING - Advocacy-led climate action for Tanzania',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GREENSHILLINGS | Advocacy-led Climate Action for Tanzania',
+    title: 'GREENSHILLING | Advocacy-led Climate Action for Tanzania',
     description:
-      'GREENSHILLINGS is an advocacy-led climate organization in Tanzania, building locally led pilots.',
+      'GREENSHILLING is an advocacy-led climate organization in Tanzania, building locally led pilots.',
   },
   robots: {
     index: true,
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'NGO',
-  name: 'GREENSHILLINGS',
+  name: 'GREENSHILLING',
   url: siteUrl,
   description:
     'Advocacy-led climate organization in Tanzania, building locally led pilot projects and integrity infrastructure for carbon finance.',

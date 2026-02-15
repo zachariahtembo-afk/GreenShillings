@@ -8,7 +8,7 @@ datasource db {
 }
 
 // ============================================================================
-// GREENSHILLINGS - Advocacy-Led NGO Schema
+// GREENSHILLING - Advocacy-Led NGO Schema
 // ============================================================================
 // This schema supports an advocacy-focused NGO model, NOT a platform/marketplace.
 // No investors, no farmers as users, no transactions, no balances, no ROI logic.
@@ -30,7 +30,7 @@ model ContactInquiry {
   @@index([source])
 }
 
-// Pilot projects designed and executed by GREENSHILLINGS
+// Pilot projects designed and executed by GREENSHILLING
 model Project {
   id                  String      @id @default(cuid())
   name                String
@@ -68,7 +68,7 @@ enum ProjectStatus {
   ON_HOLD
 }
 
-// Communities engaged in GREENSHILLINGS projects
+// Communities engaged in GREENSHILLING projects
 model Community {
   id                String    @id @default(cuid())
   name              String

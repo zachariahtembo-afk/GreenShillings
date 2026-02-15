@@ -11,7 +11,7 @@ export function Logo({ className = 'h-6 w-6', variant = 'icon' }: LogoProps) {
       <div className={cn('flex items-center gap-3', className)}>
         <LogoMark className="h-10 w-10" />
         <span className="font-semibold text-xl text-charcoal tracking-tight">
-          Green<span className="text-forest">Shillings</span>
+          Green<span className="text-forest">Shilling</span>
         </span>
       </div>
     );
@@ -86,7 +86,7 @@ export function LogoMark({ className = 'h-10 w-10', background = 'gradient' }: L
 export function LogoWordmark({ className }: { className?: string }) {
   return (
     <span className={cn('font-semibold tracking-tight', className)}>
-      Green<span className="text-forest">Shillings</span>
+      Green<span className="text-forest">Shilling</span>
     </span>
   );
 }

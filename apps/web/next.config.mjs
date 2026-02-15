@@ -12,7 +12,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'greenshillings-assets.s3.ap-southeast-2.amazonaws.com',
+        hostname: 'greenshilling.s3.ap-southeast-2.amazonaws.com',
       },
     ],
   },

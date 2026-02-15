@@ -5,7 +5,7 @@ import { Resend } from 'resend';
 const resendToken = process.env.RESEND_API_KEY;
 const resend = resendToken ? new Resend(resendToken) : null;
 const contactFromAddress =
-  process.env.CONTACT_FROM_EMAIL || 'GreenShillings <hello@greenshillings.org>';
+  process.env.CONTACT_FROM_EMAIL || 'GreenShilling <hello@greenshilling.org>';
 const contactRecipients =
   process.env.CONTACT_INBOX?.split(',')
     .map((v) => v.trim())
@@ -66,20 +66,20 @@ export async function POST(request: NextRequest) {
         await resend.emails.send({
           from: contactFromAddress,
           to: [email],
-          subject: 'Thank you for contacting GREENSHILLINGS',
+          subject: 'Thank you for contacting GREENSHILLING',
           html: `
             <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
               <h2 style="color: #1B7A3D;">Thank you, ${fullName}!</h2>
-              <p>We have received your message and appreciate you reaching out to GREENSHILLINGS.</p>
+              <p>We have received your message and appreciate you reaching out to GREENSHILLING.</p>
               <p>Our team will review your inquiry and get back to you within <strong>2-3 business days</strong>.</p>
               <p>If your matter is urgent, feel free to reply directly to this email.</p>
               <br />
               <p style="color: #666;">Warm regards,</p>
-              <p style="color: #1B7A3D; font-weight: bold;">The GREENSHILLINGS Team</p>
+              <p style="color: #1B7A3D; font-weight: bold;">The GREENSHILLING Team</p>
               <hr style="border: none; border-top: 2px solid #1B7A3D; margin-top: 24px;" />
               <p style="font-size: 12px; color: #999;">
-                GREENSHILLINGS &mdash; Equitable Carbon Finance for Tanzania<br />
-                hello@greenshillings.org
+                GREENSHILLING &mdash; Equitable Carbon Finance for Tanzania<br />
+                hello@greenshilling.org
               </p>
             </div>
           `,

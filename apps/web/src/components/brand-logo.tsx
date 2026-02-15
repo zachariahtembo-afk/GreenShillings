@@ -24,7 +24,7 @@ export function BrandLogo({
     <div className={cn('flex items-center gap-3', className)}>
       <Image
         src={logoSources[variant]}
-        alt="GreenShillings wordmark"
+        alt="GreenShilling wordmark"
         width={160}
         height={40}
         className={cn('h-10 w-auto', markClassName)}
@@ -36,7 +36,7 @@ export function BrandLogo({
             variant === 'reverse' ? 'text-white' : 'text-ink',
           )}
         >
-          GREEN<span className={variant === 'reverse' ? 'text-leaf' : 'text-forest'}>SHILLINGS</span>
+          GREEN<span className={variant === 'reverse' ? 'text-leaf' : 'text-forest'}>SHILLING</span>
         </span>
       )}
     </div>

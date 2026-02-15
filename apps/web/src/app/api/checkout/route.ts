@@ -95,7 +95,7 @@ export async function POST(request: NextRequest) {
     });
 
     // Create Stripe Checkout Session
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://greenshillings.org';
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://greenshilling.org';
 
     const session = await getStripe().checkout.sessions.create({
       mode: frequency === 'MONTHLY' ? 'subscription' : 'payment',
@@ -106,7 +106,7 @@ export async function POST(request: NextRequest) {
             currency: 'usd',
             unit_amount: Math.round(amount * 100),
             product_data: {
-              name: 'GREENSHILLINGS Donation',
+              name: 'GREENSHILLING Donation',
               description:
                 frequency === 'MONTHLY'
                   ? 'Monthly donation to support equitable carbon finance in Tanzania'

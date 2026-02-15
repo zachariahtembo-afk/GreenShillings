@@ -58,7 +58,7 @@ export function InternalNav({ user }: InternalNavProps) {
             <Link href="/" className="flex items-center gap-2.5">
               <LogoMark className="h-8 w-8" background="none" />
               <span className="hidden sm:block text-sm font-semibold text-white/90">
-                GREENSHILLINGS
+                GREENSHILLING
               </span>
             </Link>
             <Badge

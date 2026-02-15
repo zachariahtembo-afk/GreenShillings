@@ -28,7 +28,7 @@ export default function InternalLoginPage() {
         <div>
           <Link href="/" className="inline-flex items-center gap-3">
             <LogoMark className="h-10 w-10" background="none" />
-            <span className="text-white/90 font-semibold text-lg">GREENSHILLINGS</span>
+            <span className="text-white/90 font-semibold text-lg">GREENSHILLING</span>
           </Link>
         </div>
 
@@ -40,7 +40,7 @@ export default function InternalLoginPage() {
             </span>
           </div>
           <h1 className="text-3xl font-bold text-white mb-4 leading-tight">
-            Team operations dashboard for GreenShillings.
+            Team operations dashboard for GreenShilling.
           </h1>
           <p className="text-white/50 leading-relaxed">
             Manage grants, track relationships, and oversee partner portal access.
@@ -50,7 +50,7 @@ export default function InternalLoginPage() {
 
         <div className="text-xs text-white/30">
           <p>Secured via Google Workspace SSO</p>
-          <p className="mt-1">Access restricted to @greenshillings.org accounts</p>
+          <p className="mt-1">Access restricted to @greenshilling.org accounts</p>
         </div>
       </div>
 
@@ -68,7 +68,7 @@ export default function InternalLoginPage() {
           <div className="rounded-2xl bg-white border border-gray-200 p-8 shadow-sm">
             <h2 className="text-lg font-semibold text-charcoal mb-1">Sign in</h2>
             <p className="text-sm text-charcoal/60 mb-6">
-              Use your GreenShillings Google account to continue.
+              Use your GreenShilling Google account to continue.
             </p>
 
             {error && (
@@ -107,7 +107,7 @@ export default function InternalLoginPage() {
             <div className="mt-5 pt-5 border-t border-gray-100">
               <p className="text-xs text-charcoal/50 text-center">
                 Access is restricted to{' '}
-                <strong className="text-charcoal/70">@greenshillings.org</strong> team accounts.
+                <strong className="text-charcoal/70">@greenshilling.org</strong> team accounts.
               </p>
             </div>
           </div>

@@ -7,8 +7,8 @@ const CORS_HEADERS = {
 };
 
 const ALLOWED_ORIGINS = [
-  'https://greenshillings.org',
-  'https://www.greenshillings.org',
+  'https://greenshilling.org',
+  'https://www.greenshilling.org',
   'http://localhost:3000',
   'http://localhost:4001',
 ];

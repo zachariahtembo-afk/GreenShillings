@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
 export const metadata = {
-  title: 'GreenShillings Studio',
+  title: 'GreenShilling Studio',
 };
 
 export default function StudioLayout({ children }: { children: ReactNode }) {

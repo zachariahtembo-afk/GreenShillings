@@ -48,7 +48,7 @@ export function AIChat() {
         {
           role: 'assistant',
           content:
-            "Chat is offline right now. Please email hello@greenshillings.org and we'll respond soon.",
+            "Chat is offline right now. Please email hello@greenshilling.org and we'll respond soon.",
         },
       ]);
       return;
@@ -101,7 +101,7 @@ export function AIChat() {
         {
           role: 'assistant',
           content:
-            "I'm having trouble connecting right now. Please try again or contact us at hello@greenshillings.org",
+            "I'm having trouble connecting right now. Please try again or contact us at hello@greenshilling.org",
         },
       ]);
     } finally {
@@ -138,7 +138,7 @@ export function AIChat() {
               />
               {isChatEnabled ? 'Online' : 'Offline'}
             </span>
-            <span className="text-sm font-semibold text-forest">Ask GreenShillings</span>
+            <span className="text-sm font-semibold text-forest">Ask GreenShilling</span>
           </span>
         </motion.button>
       </div>
@@ -161,7 +161,7 @@ export function AIChat() {
                   <Bot className="w-5 h-5" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-ink">GreenShillings Assistant</h3>
+                  <h3 className="text-sm font-semibold text-ink">GreenShilling Assistant</h3>
                   <div className="flex items-center gap-2 text-xs text-gray-500">
                     <span
                       className={`h-2 w-2 rounded-full ${
@@ -196,12 +196,12 @@ export function AIChat() {
                     {isChatEnabled ? (
                       <p className="text-sm text-gray-600 leading-relaxed">
                         Hi! I can help you with advocacy, pilot phase progress, and how to partner
-                        with GreenShillings.
+                        with GreenShilling.
                       </p>
                     ) : (
                       <p className="text-sm text-gray-600 leading-relaxed">
                         The assistant is offline right now. You can still reach us at
-                        <span className="font-semibold text-forest"> hello@greenshillings.org</span>.
+                        <span className="font-semibold text-forest"> hello@greenshilling.org</span>.
                       </p>
                     )}
                   </div>
@@ -223,7 +223,7 @@ export function AIChat() {
                       </div>
                     </div>
                   ) : (
-                    <a href="mailto:hello@greenshillings.org" className="btn-secondary w-full">
+                    <a href="mailto:hello@greenshilling.org" className="btn-secondary w-full">
                       Email the team
                     </a>
                   )}
@@ -289,7 +289,7 @@ export function AIChat() {
                   <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
                 </Link>
                 <p className="text-[11px] text-gray-400 text-center">
-                  Or email us at hello@greenshillings.org
+                  Or email us at hello@greenshilling.org
                 </p>
               </div>
             ) : (

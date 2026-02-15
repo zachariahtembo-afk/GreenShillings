@@ -8,7 +8,7 @@ const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
   : null;
 const fromAddress =
-  process.env.CONTACT_FROM_EMAIL || 'GreenShillings <hello@greenshillings.org>';
+  process.env.CONTACT_FROM_EMAIL || 'GreenShilling <hello@greenshilling.org>';
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || '';
 
 export const runtime = 'nodejs';
@@ -93,7 +93,7 @@ export async function POST(request: NextRequest) {
             await resend.emails.send({
               from: fromAddress,
               to: session.customer_email,
-              subject: 'Thank you for your donation to GREENSHILLINGS!',
+              subject: 'Thank you for your donation to GREENSHILLING!',
               html: `
                 <h1>Thank you for your generous donation!</h1>
                 <p>
@@ -110,7 +110,7 @@ export async function POST(request: NextRequest) {
                   Together, we are building a greener, more just future for
                   Tanzania and the world.
                 </p>
-                <p>With gratitude,<br/>The GREENSHILLINGS Team</p>
+                <p>With gratitude,<br/>The GREENSHILLING Team</p>
               `,
             });
           } catch (emailError) {

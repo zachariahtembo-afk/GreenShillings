@@ -1,8 +1,8 @@
 /**
- * GREENSHILLINGS OpenAI Chat Service
+ * GREENSHILLING OpenAI Chat Service
  *
  * Powers the AI assistant on the contact page, helping visitors understand
- * GREENSHILLINGS's mission, carbon methodologies, and project economics.
+ * GREENSHILLING's mission, carbon methodologies, and project economics.
  * Bridges the "Standards Literacy" gap by making complex information accessible.
  *
  * Features:
@@ -27,13 +27,13 @@ const PUBLIC_RATE_LIMIT = 3; // messages per session for public visitors
 const RATE_LIMIT_WINDOW_MS = 24 * 60 * 60 * 1000; // 24-hour window (session-like)
 
 /**
- * GREENSHILLINGS knowledge base - core information for the AI assistant
+ * GREENSHILLING knowledge base - core information for the AI assistant
  */
-const GREENSHILLINGS_CONTEXT = `
-You are the GREENSHILLINGS AI Assistant, helping visitors understand our mission and work.
+const GREENSHILLING_CONTEXT = `
+You are the GREENSHILLING AI Assistant, helping visitors understand our mission and work.
 
-## About GREENSHILLINGS
-GREENSHILLINGS is an advocacy-led organisation focused on equitable carbon finance in Tanzania.
+## About GREENSHILLING
+GREENSHILLING is an advocacy-led organisation focused on equitable carbon finance in Tanzania.
 We use pilot projects to demonstrate what fair carbon finance looks like—not to scale carbon credit production.
 Our name combines "Green" (environmental focus) with "Shillings" (East African currency), symbolising our mission to ensure climate finance benefits local communities.
 
@@ -100,8 +100,8 @@ If users ask about:
 Respond helpfully but suggest: "For this kind of inquiry, I'd recommend speaking directly with our team. Would you like me to connect you with someone?"
 
 ## Contact Information
-- Email: hello@greenshillings.org
-- Partnership inquiries: hello@greenshillings.org
+- Email: hello@greenshilling.org
+- Partnership inquiries: hello@greenshilling.org
 - Based in Dar es Salaam, Tanzania
 `;
 
@@ -111,7 +111,7 @@ Respond helpfully but suggest: "For this kind of inquiry, I'd recommend speaking
 function hashIp(ip: string): string {
   return crypto
     .createHash('sha256')
-    .update(ip + 'greenshillings-salt')
+    .update(ip + 'greenshilling-salt')
     .digest('hex')
     .slice(0, 32);
 }
@@ -327,7 +327,7 @@ export async function requestHumanHandoff(
   return {
     success: true,
     message:
-      "I've flagged this conversation for our team. Someone will reach out to you soon at the email address on your inquiry, or you can email us directly at hello@greenshillings.org.",
+      "I've flagged this conversation for our team. Someone will reach out to you soon at the email address on your inquiry, or you can email us directly at hello@greenshilling.org.",
   };
 }
 
@@ -350,7 +350,7 @@ export async function chat(
   if (!client) {
     return {
       success: false,
-      error: 'AI chat is not available. Please contact us directly at hello@greenshillings.org',
+      error: 'AI chat is not available. Please contact us directly at hello@greenshilling.org',
     };
   }
 
@@ -363,7 +363,7 @@ export async function chat(
         success: false,
         error: 'limit_reached',
         message:
-          "Thanks for your interest in GreenShillings! For more detailed questions, our team would love to hear from you directly.",
+          "Thanks for your interest in GreenShilling! For more detailed questions, our team would love to hear from you directly.",
         remainingMessages: 0,
       };
     }
@@ -413,7 +413,7 @@ export async function chat(
 
     // Build messages array with system context
     const messages: ChatMessage[] = [
-      { role: 'system', content: GREENSHILLINGS_CONTEXT },
+      { role: 'system', content: GREENSHILLING_CONTEXT },
       ...conversationHistory.slice(-10), // Keep last 10 messages for context
       { role: 'user', content: userMessage },
     ];
@@ -469,7 +469,7 @@ export async function quickAnswer(question: string): Promise<ChatResponse> {
  * Suggested questions for the chat interface
  */
 export const SUGGESTED_QUESTIONS = [
-  'How does GREENSHILLINGS ensure 80% reaches communities?',
+  'How does GREENSHILLING ensure 80% reaches communities?',
   'What carbon standards do you follow?',
   'How can I support your work?',
   'What makes your approach different?',

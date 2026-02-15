@@ -29,7 +29,7 @@ export default function HomePage() {
           preload="auto"
           aria-hidden="true"
           className="absolute z-0 w-full h-full object-cover"
-          src="https://greenshillings-assets.s3.ap-southeast-2.amazonaws.com/Hero-village-small.mp4"
+          src="https://greenshilling.s3.ap-southeast-2.amazonaws.com/Hero-village-small.mp4"
         />
         <div className="absolute inset-0 z-10 bg-black/50" />
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-20 w-full">

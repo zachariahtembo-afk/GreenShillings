@@ -124,7 +124,7 @@ async function main() {
       summary:
         'An analysis of the structural barriers preventing Tanzanian communities from accessing voluntary carbon markets, with recommendations for policy interventions and market reforms.',
       publicationDate: new Date('2025-03-15'),
-      authors: ['GREENSHILLINGS Research Team'],
+      authors: ['GREENSHILLING Research Team'],
       isPublic: true,
       metadata: {
         pages: 42,
@@ -143,7 +143,7 @@ async function main() {
       summary:
         'An accessible introduction to the Plan Vivo standard for community-based carbon projects, explaining requirements, processes, and what communities should expect.',
       publicationDate: new Date('2025-02-01'),
-      authors: ['GREENSHILLINGS Standards Team'],
+      authors: ['GREENSHILLING Standards Team'],
       isPublic: true,
       metadata: {
         language: 'English with Chichewa summary',
@@ -160,9 +160,9 @@ async function main() {
       topic: 'market_integrity',
       audience: 'standards_bodies',
       summary:
-        "GREENSHILLINGS's position on minimum standards for community benefit-sharing in carbon projects, submitted to Verra and Gold Standard consultations.",
+        "GREENSHILLING's position on minimum standards for community benefit-sharing in carbon projects, submitted to Verra and Gold Standard consultations.",
       publicationDate: new Date('2025-01-15'),
-      authors: ['GREENSHILLINGS Policy Team'],
+      authors: ['GREENSHILLING Policy Team'],
       isPublic: true,
       metadata: {
         submittedTo: ['Verra Consultation', 'Gold Standard Review'],
@@ -239,7 +239,7 @@ async function main() {
         organization: 'Global Conservation Alliance',
         role: 'Policy Coordinator',
         message:
-          'We are developing a joint position paper on benefit-sharing standards for the upcoming UNFCCC negotiations. Would GREENSHILLINGS be interested in contributing?',
+          'We are developing a joint position paper on benefit-sharing standards for the upcoming UNFCCC negotiations. Would GREENSHILLING be interested in contributing?',
         source: 'mission',
       },
     ],

@@ -627,7 +627,7 @@ export default async function PortalRequirementsPage() {
       <div className="mb-8">
         <h1 className="text-2xl font-semibold text-charcoal mb-2">Partner requirements and evidence</h1>
         <p className="text-charcoal/70 text-lg leading-relaxed max-w-prose mb-2">
-          A structured view of partner expectations and how GreenShillings responds with
+          A structured view of partner expectations and how GreenShilling responds with
           documented evidence.
         </p>
         <p className="text-sm text-charcoal/60 max-w-prose mb-6">
@@ -868,7 +868,7 @@ export default async function PortalRequirementsPage() {
             <div className="grid grid-cols-[180px_1.2fr_1.3fr_160px_1.2fr] gap-4 px-5 py-3 text-xs font-semibold uppercase tracking-wider text-gray-500 border-b border-gray-200">
               <span>Category</span>
               <span>Requirement</span>
-              <span>GreenShillings response</span>
+              <span>GreenShilling response</span>
               <span>Status</span>
               <span>Evidence</span>
             </div>
@@ -1030,10 +1030,10 @@ export default async function PortalRequirementsPage() {
                 Requirements and evidence are refined with each partner during intake. Reach out
                 if you need a custom view or additional artifacts at{' '}
                 <a
-                  href="mailto:hello@greenshillings.org"
+                  href="mailto:hello@greenshilling.org"
                   className="text-forest hover:text-forest/80 font-medium"
                 >
-                  hello@greenshillings.org
+                  hello@greenshilling.org
                 </a>
                 .
               </p>

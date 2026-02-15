@@ -19,7 +19,7 @@ export default function ContactPage() {
               </div>
 
               <h1 className="mb-6 text-ink text-balance text-4xl md:text-5xl lg:text-6xl" data-hero>
-                Talk with GreenShillings
+                Talk with GreenShilling
               </h1>
 
               <p
@@ -62,7 +62,7 @@ export default function ContactPage() {
 
           <div className="rounded-3xl bg-white border-2 border-forest/10 p-6 md:p-7">
             <p className="text-xs uppercase tracking-[0.2em] text-forest/70 mb-3">Direct email</p>
-            <p className="text-xl font-semibold text-forest mb-2">hello@greenshillings.org</p>
+            <p className="text-xl font-semibold text-forest mb-2">hello@greenshilling.org</p>
             <p className="text-sm text-charcoal/70 max-w-prose">
               For access requests, MRV questions, or partnership discussions.
             </p>
@@ -107,10 +107,10 @@ export default function ContactPage() {
                         <h3 className="text-lg font-semibold text-forest mb-2">Prefer email?</h3>
                         <p className="text-gray-500 mb-3">Reach us directly at</p>
                         <a
-                          href="mailto:hello@greenshillings.org"
+                          href="mailto:hello@greenshilling.org"
                           className="text-lg text-forest font-semibold hover:text-forest-600 transition-colors"
                         >
-                          hello@greenshillings.org
+                          hello@greenshilling.org
                         </a>
                       </div>
                     </div>
